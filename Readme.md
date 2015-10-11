@@ -1,6 +1,6 @@
 # Readme
 This Script should work with every Pixhawk (Pixhawk, Fixhawk, AUAV-X2, etc.) which
-is connected to a FrSky D-Receiver (D4R, D8R)
+is connected to a FrSky D-Receiver (D4R, D8R,X4r and maybe more)
 
 It displays the voltage, current and total comsumption, beside the altitude and distance from home below the currently used flightmode and 3D Fix informations.
 Also RSSI is displayed on the left side. All values are based on converted mavlink Data.
@@ -10,22 +10,25 @@ Displayed content while in user controlled mode
 ![Displayed content while in GPS controlled mode](https://raw.githubusercontent.com/Jace25/LUA-Taranis-Pixhawk/master/lua2.JPG)
 Displayed content while in GPS controlled mode
 
-## Flightcontroller Setup
+## Flightcontroller D port Setup
 1. Connect the Pixhawk with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from Ebay also works fine (watch for correct specifications)) and connect RS232 TTL level converter with your Frysky Receiver
 2. Activate the FrSky D protocol in the parameters for the appropriate port
 
-## Taranis Setup (if OpenTx 2.1 or newer)
-1. Make sure you have LUA-Scripting enabled
-2. If you dont have a folder "SCRIPTS", create it in your Sd's root
-3. Download the scripts folder from here
-4. Copy the "BMP" Folder from the just downloaded "SCRIPTS" Folder to your Taranis "SCRIPTS" folder
-5. Create a new Folder inside the "SCRIPTS" folder, which is named "TELEMETRY"
-6. Copy the pixhawk.lua inside the "SCRIPTS/TELEMETRY" folder
-7. Start your Taranis, go into your desired Model Settings by shortpressing the Menu button
-8. Navigate to the last Page by long pressing the page button
-9. Discovery new Sensors
-10. There will be a lot of sensors listed depending on your receiver (d8r, d4r, x8r etc)
-11. Now its your turn to name the sensors right, so the lua script can make use of them. Also, each sensor has to set to raw data. Naming is casesensitive!
+## Flightcontroller S port Setup
+1. Connect the Pixhawk with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from Ebay also works fine (watch for correct specifications)) and connect RS232 TTL level converter with your Frysky Receiver
+2. frysky spc cable, but its only one diode and you can soldering the diode direct to the RS 232 TTL converter
+3. Activate the FrSky S protocol in the parameters for the appropriate port
+
+
+## Taranis Setup OpenTx 2.1.2 or newer
+1. Make sure you have LUA-Scripting enabled in companion
+2. Download the scripts folder from here and copy to the sd card root
+3. Start your Taranis, go into your desired Model Settings by shortpressing the Menu button
+4. Navigate to the last Page by long pressing the page button
+5. Discovery new Sensors
+6. There will be a lot of sensors listed depending on your receiver (d8r, d4r, x8r etc)
+7. Now its your turn to name the sensors right if they dont automatic right especially Temp, so the lua script can make use of them. Naming is casesensitive!
+8. Set this lua script as Telemety screen.
 
 ### Sensor Setup
 * VFAS -> Lipo Voltage
@@ -35,14 +38,6 @@ Displayed content while in GPS controlled mode
 * Temp -> GPS Fix (something like 103 for 10 satelites and 3d fix or 93 for 9 satelites and 3d fix)
 * RSSI -> Rssi Value
 
-## Taranis Setup (if OpenTX < 2.1.x)
-1. Make sure you have LUA-Scripting enabled
-2. If you dont have a folder "SCRIPTS", create it in your Sd's root
-3. Download the scripts folder from here
-4. Copy the "BMP" Folder from the just downloaded "SCRIPTS" Folder to your Taranis "SCRIPTS" folder
-5. Create a new Folder inside the "SCRIPTS" folder, which has the exact name of your model (eg. Discovery)
-6. Copy the lua script from the just downloaded "SCRIPTS/Modelname" folder inside your previously created folder
-7. Start your Taranis an long press "PAGE"-Button
 
 ##useful links
 1. http://copter.ardupilot.com/wiki/common-optional-hardware/common-telemetry-landingpage/common-frsky-telemetry/ (How to connect your Converter)
