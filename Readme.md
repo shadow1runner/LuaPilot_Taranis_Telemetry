@@ -16,7 +16,7 @@ Displayed content while in GPS controlled mode
 
 ## Flightcontroller S port Setup
 1. Connect the Pixhawk with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from Ebay also works fine (watch for correct specifications)) and connect RS232 TTL level converter with your Frysky Receiver
-2. frysky spc cable, but its only one diode and you can soldering the diode direct to the RS 232 TTL converter
+2. Buy the frsky spc cable, but its only one normal diode and you can soldering the diode direct to the RS 232 TTL converter and dosnt need the spc adapter
 3. Activate the FrSky S protocol in the parameters for the appropriate port
 
 
