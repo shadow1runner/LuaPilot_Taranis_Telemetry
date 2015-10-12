@@ -1,10 +1,13 @@
 # Readme
 This Script should work with every Pixhawk (Pixhawk, Fixhawk, AUAV-X2, etc.) which
-is connected to a FrSky D-Receiver (D4R, D8R,X4r and maybe more)
+is connected to a FrSky D-Receiver & X-Receiver.
 
-It displays the voltage, current and total comsumption, beside the altitude and distance from home below the currently used flightmode and 3D Fix informations.
-Also RSSI is displayed on the left side. All values are based on converted mavlink Data.
-## Screenshots
+It displays the voltage, Batterylevel, Rssi in Percent, current and total comsumption, beside the altitude and in Future the distance from home below the currently used flightmode and 3D Fix informations also the Calculate Vertical Speed and the Flight efficiency.
+
+it Base on the Greats and Beautiful works from SockEye, Richardoe, Schicksie, lichtl  for the Naza flightcontroller convertet to arducopter & openTx 2.1 and Modified by Jace25 FPV-Community and Improve from my (more than 4s Battery, Batteryconsum, Vspeed, Gps Speed, Hdg, efficiency Calc and Code Improvments like Backround Task and flexible Configs.
+
+
+## Old Screenshots
 ![Displayed content while in user controlled mode](https://raw.githubusercontent.com/Jace25/LUA-Taranis-Pixhawk/master/lua1.JPG)
 
 Displayed content while in user controlled mode
@@ -48,6 +51,5 @@ Displayed content while in GPS controlled mode
 
 ##useful links
 1. http://copter.ardupilot.com/wiki/common-optional-hardware/common-telemetry-landingpage/common-frsky-telemetry/ (How to connect your Converter)
-2. http://fpv-community.de/showthread.php?63147-Telemetriedaten-vom-AUAV-X2-mit-D4R-II (How to connect a AUAV-X2 or Pixhawk with a D4R-II)
-3. http://fpv-community.de/showthread.php?57636-Naze32-amp-FRSky-D4R-II-Telemetrie-LUA-Script (My Script gets its fancy graphics from this script)
+2. http://fpv-community.de/showthread.php?57636-Naze32-amp-FRSky-D4R-II-Telemetrie-LUA-Script (the older Script gets its fancy graphics from this script)
 
