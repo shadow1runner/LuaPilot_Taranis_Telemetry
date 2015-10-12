@@ -4,7 +4,7 @@ is connected to a FrSky D-Receiver & X-Receiver.
 
 It displays the voltage, Batterylevel, Rssi in Percent, current and total comsumption, beside the altitude and in Future the distance from home below the currently used flightmode and 3D Fix informations also the Calculate Vertical Speed and the Flight efficiency.
 
-it Base on the Greats and Beautiful works from SockEye, Richardoe, Schicksie, lichtl  for the Naza flightcontroller convertet to arducopter & openTx 2.1 and Modified by Jace25 FPV-Community and Improve from my (more than 4s Battery, Batteryconsum, Vspeed, Gps Speed, Hdg, efficiency Calc and Code Improvments like Backround Task and flexible Configs.
+it base on the greats and Beautiful works from SockEye, Richardoe, Schicksie, lichtl  for the Naza flightcontroller convertet to arducopter & openTx 2.1 and Modified by Jace25 FPV-Community and Improve from my (more than 4s Battery, Batteryconsum, Vspeed, Gps Speed, Hdg, efficiency Calc and Code Improvments like Backround Task and flexible Configs.
 
 
 ## Old Screenshots
