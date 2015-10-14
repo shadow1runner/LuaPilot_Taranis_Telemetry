@@ -1,5 +1,5 @@
 # Readme
-This Script should work with every Pixhawk (Pixhawk, Fixhawk, AUAV-X2, etc.) which
+This Script LuaPilot should work with every Pixhawk (Pixhawk, Fixhawk, AUAV-X2, etc.) which
 is connected to a FrSky D-Receiver & X-Receiver.
 
 It displays the voltage, Batterylevel, Rssi in Percent, current and total comsumption, beside the altitude and in Future the distance from home below the currently used flightmode and 3D Fix informations also the Calculate Vertical Speed and the Flight efficiency.
