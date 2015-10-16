@@ -1,10 +1,12 @@
 # Readme
-This Script LuaPilot should work with every Pixhawk (Pixhawk, Fixhawk, AUAV-X2, etc.) which
+This Script LuaPilot should work with Arducopter (Pixhawk, Fixhawk, AUAV-X2, etc.) which
 is connected to a FrSky D-Receiver & X-Receiver.
 
-It displays the voltage, Batterylevel, Rssi in Percent, current and total comsumption, beside the altitude and in Future the distance from home below the currently used flightmode and 3D Fix informations also the Calculate Vertical Speed and the Flight efficiency.
+It displays the Voltage, Batterylevel, Rssi in %, current and total comsumption, altitude, GPS Speed and in Future the distance from home, the currently used flightmode and GPS infos like 3D Fix, DGPS... also the Calculate Vertical Speed and the Flight efficiency.
 
-it base on the greats and Beautiful works from SockEye, Richardoe, Schicksie, lichtl  for the Naza flightcontroller convertet to arducopter & openTx 2.1 and Modified by Jace25 FPV-Community and Improve from my (more than 4s Battery, Batteryconsum, Vspeed, Gps Speed, Hdg, efficiency Calc and Code Improvments like Backround Task and flexible Configs.
+it base on the greats and Beautiful works from SockEye, Richardoe, Schicksie, lichtl  for the Naza flightcontroller convertet to Arducopter & openTx 2.1 and Modified by Jace25 (FPV-Community) and Improve from my ilihack (more than 4s Battery, Batteryconsum, Vspeed, Gps Speed, Hdg, efficiency Calc and Code Improvments like Backround Task, flexible Configs and Error Handling.
+
+Lets improve togheter it and made Folks&Pull requests or if you have an issues zell it me please.
 
 
 ## Old Screenshots
@@ -18,17 +20,17 @@ Displayed content while in user controlled mode
 
 Displayed content while in GPS controlled mode
 
-## Flightcontroller D port Setup
+## Flightcontroller D-port Setup
 1. Connect the Pixhawk with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from Ebay also works fine (watch for correct specifications)) and connect RS232 TTL level converter with your Frysky Receiver
 2. Activate the FrSky D protocol in the parameters for the appropriate port. baute rate 9kbs
 
-## Flightcontroller S port Setup
-1. Connect the Pixhawk with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from Ebay also works fine (watch for correct specifications)) and connect RS232 TTL level converter with your Frysky Receiver
-2. Buy the frsky spc cable, but its only one normal diode and you can soldering the diode direct to the RS 232 TTL converter and dosnt need the spc adapter
+## Flightcontroller S-port Setup (Arducopter > V3.3)
+1. Connect the Pixhawk with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from Ebay (MAX3232CSE also works fine & is easy to solder) and connect RS232 TTL level converter with your Frysky Receiver
+2. Buy the frsky spc cable, but its only one normal diode and you can soldering the diode direct to the RS 232 TTL converter and dosnt need the SPC Adapter
 3. Activate the FrSky S protocol in the parameters for the appropriate port. baute rate: 57kbs
 
 
-## Taranis Setup OpenTx 2.1.2 or newer
+## Taranis Setup OpenTx 2.1.3 or newer
 1. Make sure you have LUA-Scripting enabled in companion
 2. Download the scripts folder from here and copy to the sd card root
 3. Start your Taranis, go into your desired Model Settings by shortpressing the Menu button
