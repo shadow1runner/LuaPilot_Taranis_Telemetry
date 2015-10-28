@@ -6,7 +6,7 @@ It displays the Voltage, Batterylevel, Rssi in %, current and total comsumption,
 
 it base on the greats and Beautiful works from SockEye, Richardoe, Schicksie, lichtl  for the Naza flightcontroller convertet to Arducopter & openTx 2.1 and Modified by Jace25 (FPV-Community) and Improve from my ilihack (more than 4s Battery, HVlipo, Batteryconsum, Vspeed, Gps Speed, Hdg, efficiency Calc and Code Improvments like Backround Task, flexible Configs and Error Handling.
 
-Lets improve togheter it and made Folks&Pull requests or if you have an issues zell it me please.
+Lets improve togheter it and made Folks&Pull requests or if you have an issue tell it me 
 
 
 ## Old Screenshots
