@@ -7,6 +7,7 @@ Lets improve it together and have one nice all in one Taranis Telemtry Script , 
 
 This is Version 1 for the Future its planed to add more Screens,more FlightControllers and a Radar screen.
 
+-![Displayed content while in user controlled mode](https://raw.githubusercontent.com/Jace25/LUA-Taranis-Pixhawk/master/lua1.JPG)
 
 Installing:
 Flightcontroller D-port Setup
