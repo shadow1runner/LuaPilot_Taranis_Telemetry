@@ -23,7 +23,7 @@ Displayed content while in GPS controlled mode
 1. Connect the Arducopter with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from EBay also works fine (watch for correct specifications)) and connect RS232 TTL level converter with your FrSky Receiver
 2. Activate the FrSky D protocol in the parameters for the appropriate port. baute rate 9kbs
 
-## Flight controller S-port Setup (if use Arducopter then only > V3.3)
+## Flight controller S-port Setup (if Arducopter then only > V3.3)
 1. Connect the Pixhawk with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from EBay (MAX3232CSE also works fine & is easy to solder) and connect RS232 TTL level converter with your FrSky Receiver
 2. Buy the FrSky spc cable, but its only one normal diode and you can soldering the diode direct to the RS 232 TTL converter and doesn’t need the SPC Adapter
 3. Activate the FrSky S protocol in the parameters for the appropriate port. baute rate: 57kbs
@@ -54,4 +54,4 @@ Displayed content while in GPS controlled mode
 
 ##LuaPilot Script Dowload
 https://github.com/ilihack/LuaPilot_Taranis_Telemetry/archive/master.zip
-2. https://github.com/ilihack/LuaPilot_Taranis_Telemetry/archive/master.zip
+
