@@ -4,7 +4,7 @@ is connected to a FrSky D-Receiver & X-Receiver.
 
 It displays the Voltage, Batterylevel, Rssi in %, current and total comsumption, altitude, GPS Speed and in Future the distance from home, the currently used flightmode and GPS infos like 3D Fix, DGPS... also the Calculate Vertical Speed and the Flight efficiency.
 
-it base on the greats and Beautiful works from SockEye, Richardoe, Schicksie, lichtl  for the Naza flightcontroller convertet to Arducopter & openTx 2.1 and Modified by Jace25 (FPV-Community) and Improve from my ilihack (more than 4s Battery, Batteryconsum, Vspeed, Gps Speed, Hdg, efficiency Calc and Code Improvments like Backround Task, flexible Configs and Error Handling.
+it base on the greats and Beautiful works from SockEye, Richardoe, Schicksie, lichtl  for the Naza flightcontroller convertet to Arducopter & openTx 2.1 and Modified by Jace25 (FPV-Community) and Improve from my ilihack (more than 4s Battery, HVlipo, Batteryconsum, Vspeed, Gps Speed, Hdg, efficiency Calc and Code Improvments like Backround Task, flexible Configs and Error Handling.
 
 Lets improve togheter it and made Folks&Pull requests or if you have an issues zell it me please.
 
@@ -35,23 +35,24 @@ Displayed content while in GPS controlled mode
 2. Download the scripts folder from here and copy to the sd card root
 3. Start your Taranis, go into your desired Model Settings by shortpressing the Menu button
 4. Navigate to the last Page by long pressing the page button
-5. Discovery new Sensors
-6. There will be a lot of sensors listed depending on your receiver (d8r, d4r, x8r etc)
-7. Now its your turn to name the sensors right if they dont automatic right especially Temp, so the lua script can make use of them. Naming is casesensitive!
-8. Set this lua script as Telemety screen.
+5. Delete all Sensors
+6. Discovery new Sensors
+7. There will be a lot of sensors listed depending on your receiver (d8r, d4r, x8r etc)
+8. Very Recommed is to Check if the sensors Named correct  especially the two Temp, so the lua script can make use of them and not from the Fallback IDs. Naming is casesensitive!
+9. Set this lua script as Telemety screen.
 
-### Sensor Setup
+### Sensor Names
 * VFAS -> Lipo Voltage
 * Alt -> Altitude
 * Curr -> Current drain
 * Gspd -> GPS Speed
 * Hdg -> Compass Direction
-* Tem1 -> This sensor was found as Temp besides another sensor named temp. The sensor, which sends the flightmode mostly the first of the two has to be named to Tem1
-* Temp -> GPS Fix (something like 103 for 10 satelites and 3d fix or 93 for 9 satelites and 3d fix)
+* Temp -> Flightmode
+* Tem1 -> GPS Fix (something like 103 for 10 satelites and 3d fix or 93 for 9 satelites and 3d fix are mostly the second of the two Temp and must be renamed to Tem1)
 * RSSI -> Rssi Value
 
 
 ##useful links
 1. http://copter.ardupilot.com/wiki/common-optional-hardware/common-telemetry-landingpage/common-frsky-telemetry/ (How to connect your Converter)
-2. http://fpv-community.de/showthread.php?57636-Naze32-amp-FRSky-D4R-II-Telemetrie-LUA-Script (the older Script gets its fancy graphics from this script)
+
 
