@@ -7,16 +7,6 @@ Lets improve it together and have one nice all in one Taranis Telemtry Script , 
 
 This is Version 1 for the Future its planed to add more Screens,more FlightControllers and a Radar screen.
 
-Old Screenshots
-
-Displayed content while in user controlled mode
-
-Displayed content while in user controlled mode
-
-Displayed content while in GPS controlled mode
-
-Displayed content while in GPS controlled mode
-
 
 Installing:
 Flightcontroller D-port Setup
