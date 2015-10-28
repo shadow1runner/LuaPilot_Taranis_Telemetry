@@ -12,7 +12,7 @@ This is Version 1 for the next Version 2 it’s planned to add more Screens, mor
 
 
 
-![Displayed content while in GPS controlled mode](https://raw.githubusercontent.com/ilihack/LuaPilot_Taranis_Telemetry/master/luaPilot.JPG)
+![Displayed content while in GPS controlled mode](https://raw.githubusercontent.com/ilihack/LuaPilot_Taranis_Telemetry/master/LuaPilot.JPG)
 
 Displayed content while in GPS controlled mode
 
