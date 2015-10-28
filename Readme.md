@@ -1,13 +1,11 @@
 # Readme
-This Script LuaPilot should work with Arducopter (Pixhawk, Fixhawk, AUAV-X2, etc.) which
-is connected to a FrSky D-Receiver & X-Receiver.
+This Script LuaPilot is a nice Telemetry screen for Taranis should work with Arducopter (Pixhawk, Fixhawk,  AUAV-X2, etc.) and maybe others Flightcontrollers which are connected to a FrSky D-Receiver & X-Receiver.
 
-It displays the Voltage, Batterylevel, Rssi in %, current and total comsumption, altitude, GPS Speed and in Future the distance from home, the currently used flightmode and GPS infos like 3D Fix, DGPS... also the Calculate Vertical Speed and the Flight efficiency.
 
-it base on the greats and Beautiful works from SockEye, Richardoe, Schicksie, lichtl  for the Naza flightcontroller convertet to Arducopter & openTx 2.1 and Modified by Jace25 (FPV-Community) and Improve from my ilihack (more than 4s Battery, HVlipo, Batteryconsum, Vspeed, Gps Speed, Hdg, efficiency Calc and Code Improvments like Backround Task, flexible Configs and Error Handling.
+It base on the greats and Beautiful works from SockEye, Richardoe, Schicksie, lichtl  for the Naza flightcontroller convertet to Arducopter & openTx 2.1 by Jace25 (FPV-Community) and Improve from ilihack (HVlipo and add 5s,6s,8s,10s Batterycell compatibilityt , Batteryconsum, Vspeed, Gps Speed, Hdg, efficiency Calc and Code Improvments like Backround Task, flexible Configs and Error Handling.
 
-Lets improve togheter it and made Folks&Pull requests or if you have an issue tell it me 
-
+Lets improve it togheter and made Folks&Pull requests or if you have an issue open please an tread.
+This is Version 1 for the Future its planed to add more Screens,more FlightControllers and a Radar screen.
 
 ## Old Screenshots
 ![Displayed content while in user controlled mode](https://raw.githubusercontent.com/Jace25/LUA-Taranis-Pixhawk/master/lua1.JPG)
@@ -24,7 +22,7 @@ Displayed content while in GPS controlled mode
 1. Connect the Pixhawk with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from Ebay also works fine (watch for correct specifications)) and connect RS232 TTL level converter with your Frysky Receiver
 2. Activate the FrSky D protocol in the parameters for the appropriate port. baute rate 9kbs
 
-## Flightcontroller S-port Setup (Arducopter > V3.3)
+## Flightcontroller S-port Setup (if Arducopter then only > V3.3)
 1. Connect the Pixhawk with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from Ebay (MAX3232CSE also works fine & is easy to solder) and connect RS232 TTL level converter with your Frysky Receiver
 2. Buy the frsky spc cable, but its only one normal diode and you can soldering the diode direct to the RS 232 TTL converter and dosnt need the SPC Adapter
 3. Activate the FrSky S protocol in the parameters for the appropriate port. baute rate: 57kbs
@@ -38,7 +36,7 @@ Displayed content while in GPS controlled mode
 5. Delete all Sensors
 6. Discovery new Sensors
 7. There will be a lot of sensors listed depending on your receiver (d8r, d4r, x8r etc)
-8. Very Recommed is to Check if the sensors Named correct  especially the two Temp, so the lua script can make use of them and not from the Fallback IDs. Naming is casesensitive!
+8. Very Recommed is to Check if the sensors Named correct especially the two Temp and using withoud Arducopter, so the lua script can make use of them and not from the arducopter Fallback IDs. Naming is casesensitive!
 9. Set this lua script as Telemety screen.
 
 ### Sensor Names
