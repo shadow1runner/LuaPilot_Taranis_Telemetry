@@ -1,7 +1,7 @@
 ﻿# Readme
 This Script LuaPilot is a nice Telemetry screen for Taranis with openTx >2.1 and should work with Arducopter (Pixhawk, Fixhawk, AUAV-X2, etc.) and maybe others Flight controllers which are connected to an FrSky D-Receiver & X-Receiver.
 
-It base on the greats and beautiful works from SockEye, Richardoe, Schicksie, lichtl, Jace25 (FPV-Community) and Improve and extended from my (HVlipo and add 5s,6s,8s,10s,12s Battery cell compatibility , Battery consume, Vspeed, GPS Speed, Hdg, efficiency Calc, Background Task, flexible Configs and Error Handling)
+It base on the greats and beautiful works from SockEye, Richardoe, Schicksie, lichtl, ben_&Jace25 (FPV-Community) and Improve and extended from my (HVlipo and add 5s,6s,8s,10s,12s Battery cell compatibility , Battery consume, Vspeed, GPS Speed, Hdg, efficiency Calc, Background Task, flexible Configs and Error Handling)
 
 Let’s improve it together and have one nice all in one Taranis Telemetry Script, made Pull Requests and if you have an issue please report it :)
 
