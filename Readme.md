@@ -1,7 +1,7 @@
 ﻿# Readme
 This Script LuaPilot is a nice Telemetry screen for Taranis with openTx >2.1 and should work with Arducopter (Pixhawk, Fixhawk, AUAV-X2, etc.) and maybe others Flight controllers which are connected to an FrSky D-Receiver & X-Receiver.
 
-It base on the greats and beautiful works from SockEye, Richardoe, Schicksie, lichtl, ben_&Jace25 (FPV-Community) and Improve and extended from my (HVlipo and add 5s,6s,8s,10s,12s Battery cell compatibility , Battery consume, Vspeed, GPS Speed, Hdg, efficiency Calc, Background Task, flexible Configs and Error Handling)
+It base on the greats and beautiful works from SockEye, Richardoe, Schicksie, lichtl, ben_&Jace25 (FPV-Community) and Improve and extended from my (HVlipo and add 6s,8s Batterys , Battery consume, Vspeed, GPS Speed, Hdg, efficiency Calc, Background Task, flexible Configs)
 
 Let’s improve it together and have one nice all in one Taranis Telemetry Script, made Pull Requests and if you have an issue please report it :)
 
@@ -24,7 +24,7 @@ Displayed content while in GPS controlled mode
 ## Flight controller S-port Setup (if Arducopter then only > V3.3)
 1. Connect the Pixhawk with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from EBay (MAX3232CSE also works fine & is easy to solder) and connect RS232 TTL level converter with your FrSky Receiver
 2. Buy the FrSky spc cable, but its only one normal diode and you can soldering the diode direct to the RS 232 TTL converter like https://goo.gl/y9XCq8 and doesn’t need the SPC Adapter
-3. Activate the FrSky S protocol in the parameters for the appropriate port. baute rate: 57kbs
+3. Activate the FrSky S protocol in the parameters* for the appropriate port. baute rate: 57kbs *(APMPlaner2)
 
 
 
@@ -36,7 +36,7 @@ Displayed content while in GPS controlled mode
 5. Delete all Sensors
 6. Discovery new Sensors
 7. There will be a lot of sensors listed depending on your receiver (d8r, d4r, x8r etc.)
-8. Very Recommend is to Check if the sensors Named correct especially the two Temp and using without Arducopter, so the lua script can make use of them and not from the Arducopter Fallback IDs. Naming is case sensitive!
+8. Very Recommend is to Check if the sensors Named correct especially the two Temp so the cript can make use of them. Naming is case sensitive!
 9. Set this lua script as Telemetry screen.
 
 ### Sensor Namens
@@ -45,7 +45,7 @@ Displayed content while in GPS controlled mode
 * Curr -> Current drain
 * Gspd -> GPS Speed
 * Hdg -> Compass Direction
-* Temp -> Flight mode
+* Temp -> Flight mode (small Numbers)
 * Tem1 -> GPS Fix (something like 103 for 10 satellites’ and 3d fix or 93 for 9 satellites’ and 3d fix are mostly the second    of the two Temp and must be renamed to Tem1)
 * RSSI -> Rssi Value
 
