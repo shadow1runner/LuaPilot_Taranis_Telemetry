@@ -21,7 +21,7 @@ Displayed content while in GPS controlled mode
 1. Connect the Arducopter with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from EBay also works fine (watch for correct specifications)) and connect RS232 TTL level converter with your FrSky Receiver
 2. Activate the FrSky D protocol in the parameters for the appropriate port. baute rate 9kbs
 
-## Flight controller S-port Setup (Only X Reciver and only aviable in Arducopter V3.3)
+## Flight controller S-port Setup (only X Reciver & Arducopter V3.3)
 1. Connect the Pixhawk with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from EBay (MAX3232CSE also works fine & is easy to solder) and connect RS232 TTL level converter with your FrSky Receiver
 2. Buy the FrSky spc cable, but its only one normal diode and you can soldering the diode direct to the RS 232 TTL converter like https://goo.gl/y9XCq8 and doesn’t need the SPC Adapter
 3. Activate the FrSky S protocol in the parameters* for the appropriate port. baute rate: 57kbs *(APMPlaner2)
