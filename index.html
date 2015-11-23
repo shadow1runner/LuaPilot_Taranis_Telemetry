@@ -22,15 +22,21 @@
       <h1>
 <a id="readme" class="anchor" href="#readme" aria-hidden="true"><span class="octicon octicon-link"></span></a>Readme</h1>
 
-<p>This Script LuaPilot is a nice Telemetry screen for Taranis with openTx &gt;2.13 and should work with Arducopter (Pixhawk, Fixhawk, AUAV-X2, etc.) and maybe others Flight controllers which are connected to an FrSky D-Receiver &amp; X-Receiver.</p>
+<p>This Script LuaPilot is a nice Telemetry screen for Taranis with openTx &gt;2.16 and should work with Arducopter (Pixhawk, Fixhawk, AUAV-X2, etc.) and maybe others Flight controllers which are connected to an FrSky D-Receiver &amp; X-Receiver.</p>
 
-<p>Thank's to SockEye, Richardoe, Schicksie, lichtl, ben_&amp;Jace25,Clooney82&amp;fnoopdogg for they Work.</p>
+<p>Thank's to SockEye, Richardoe, Schicksie, lichtl, ben_&amp;Jace25,Clooney82&amp;fnoopdogg for they Previos Work.</p>
 
-<p>Recently Changes: (HVlipo and 6s&amp;8s Lipos,True Battery Percent Curve with Resistance Calc&amp;Compensation, Battery Consume, Vspeed, GPS Speed, Hdg, efficiency Calc, Background Task, flexible Configs, Audio Alerts for BattVoltage and Consume, Audio for Flight mode Changes)</p>
+<p>Changlog:</p>
 
-<p>Let’s improve it together and have one nice all in one Taranis Telemetry Script, made Pull Requests and if you have an issue please report it :)</p>
+<p>V2:
+Performance &amp; less Memory Consum, Better Hdg, Distance, Battery Percent Calculation with capacity, Resistance Calc &amp; Voltage Compensation, better Battery Regresion Curve , Audio Alerts for BattVoltage,Consume,Flightmode,Max Avarage Current &amp; GPS State</p>
 
-<p>This is Version 1 for the next Version it’s planned to add more Screens, more Flight Controllers and a GPS/Compass "Radar" screen. </p>
+<p>V1:
+Battery Consume, Vspeed, GPS Speed, Hdg, efficiency Calc, Background Task, flexible Configs. </p>
+
+<p>Let’s improve it together and have one nice all in one Taranis Telemetry Script, made Pull Requests or if you have an issue please report it :)</p>
+
+<p>This is Version 2 for the next Version 3 it’s planned to add more Screens, more Flight Controllers and a GPS/Compass "Radar" screen. </p>
 
 <h2>
 <a id="screenshots" class="anchor" href="#screenshots" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshots</h2>
@@ -54,7 +60,7 @@
 <a id="flight-controller-s-port-setup-x-reciver-with-arducopter-v33" class="anchor" href="#flight-controller-s-port-setup-x-reciver-with-arducopter-v33" aria-hidden="true"><span class="octicon octicon-link"></span></a>Flight controller S-port Setup (X-Reciver with Arducopter V3.3)</h2>
 
 <ol>
-<li>Connect the Pixhawk with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from EBay (MAX3232CSE also works fine &amp; is easy to solder) and connect RS232 TTL level converter with your FrSky Receiver</li>
+<li>Connect the Pixhawk with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from EBay (MAX3232CSE also works fine &amp; is better to solder) and connect RS232 TTL level converter with your FrSky Receiver</li>
 <li>Buy the FrSky spc cable, but its only one normal diode and you can soldering the diode direct to the RS 232 TTL converter like <a href="https://goo.gl/y9XCq8">https://goo.gl/y9XCq8</a> and doesn’t need the SPC Adapter</li>
 <li>Activate the FrSky S protocol in the parameters* for the appropriate port. baute rate: 57kbs *(APMPlaner2)</li>
 </ol>
@@ -65,12 +71,13 @@
 <ol>
 <li>Make sure you have LUA-Scripting enabled in companion</li>
 <li>Download the scripts folder from here and copy to the SD card root</li>
+<li>Optional: Edit with an txt Editor the Dowloaded Script to Change the Setup to you own Wishes</li>
 <li>Start your Taranis, go into your desired Model Settings by short pressing the Menu button</li>
 <li>Navigate to the last Page by long pressing the page button</li>
 <li>Delete all Sensors</li>
 <li>Discovery new Sensors</li>
 <li>There will be a lot of sensors listed depending on your receiver (d8r, d4r, x8r etc.)</li>
-<li>Very Recommend is to Check if the sensors Named correct especially the two Temp so the cript can make use of them. Naming is case sensitive!</li>
+<li>Very Recommend is to Check if the sensors Named correct especially the two Temp must be renamed so the script can make use of them. Naming is case sensitive! </li>
 <li>Set this lua script as Telemetry screen.</li>
 </ol>
 
@@ -83,10 +90,17 @@
 <li>Curr -&gt; Current drain</li>
 <li>Gspd -&gt; GPS Speed</li>
 <li>Hdg -&gt; Compass Direction</li>
-<li>Temp -&gt; Flight mode (small Numbers)</li>
-<li>Tem1 -&gt; GPS Fix (something like 103 for 10 satellites’ and 3d fix or 93 for 9 satellites’ and 3d fix are mostly the second    of the two Temp and must be renamed to Tem1)</li>
+<li>Tmp1 -&gt; Flight mode (small Numbers)</li>
+<li>Tmp2 -&gt; GPS Fix (something like 103 for 10 satellites’ and 3d fix or 93 for 9 satellites’ and 3d fix)</li>
 <li>RSSI -&gt; Rssi Value</li>
 </ul>
+
+<h3>
+<a id="using" class="anchor" href="#using" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using:</h3>
+
+<p>Push in the Normal Taranis Screen Long The Page Button to see the LuaPilot Telemetry screen.</p>
+
+<p>If you want to Reset LuaPilot because you have a new HomePosition or reset you Battery Consumm or what else Push long Menu in LuaPilot.</p>
 
 <h2>
 <a id="useful-links" class="anchor" href="#useful-links" aria-hidden="true"><span class="octicon octicon-link"></span></a>useful links</h2>
