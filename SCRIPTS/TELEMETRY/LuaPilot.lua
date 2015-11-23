@@ -1,8 +1,8 @@
 --#########################################################################################
---#   LuaPilot v2.000  Lua Telemetry Script for Taranis by ilihack                        #
+--#   LuaPilot v2.005  Lua Telemetry Script for Taranis by ilihack                        #
 --#                                                                                       #
 --#                                                                                       #
---#  + with opentx 2.16 and above, tested with D4r-II & D8R & X4R                         #  
+--#  + with opentx 2.16 and above, tested with D4r-II & D8R & X4R                         #
 --#                                                                                       #
 --#  + works with Arducopter Flight  Controller like Pixhawk,APM and maybe others         #
 --#                                                                                       #
@@ -18,13 +18,13 @@
 local HeadingOrDist = 2       --draw Hdg=0 / Draw Distance=1 / Draw Both alternatel=2     #
 local BatterymahAlarm = 0 --0=off or like 2200 for Alarming if you used more 2200mAh      #
 local SaybatteryPercent=1 ---0=off or 1 if you will hear you Batterypercent in 10% Steps  #
-local CellVoltAlarm=3.2 --0=off or like 3.3 to get an Alarm if you have less than 3.3V    #                            
+local CellVoltAlarm=3.3 --0=off or like 3.3 to get an Alarm if you have less than 3.3V    #                            
 --                                                                                        #
 --#########################################################################################                                                  
 -- Advance Configs:                                                                       #
 --                                                                                        #
 local MaxAvarageAmpere=0 -- 0=Off, Alarm if the avarage 5s current is over this Value     #
-local CalcBattResistance=0 --0=off ALPHA: 1=AutoCalc Lipo Resistance an correct Lipo.Level#   
+local CalcBattResistance=0 --0=off 1=AutoCalc Lipo Resistance an correct Lipo.Level ALPHA #   
 local battype=0   -- 0=Autodetection (1s,2s,3s,4s,6s,8s) or 7 for an 7s Battery Conf      #
 local BattLevelmAh = 0 --if 0 BatteryLevel calc from Volt else from this mAh Value        #
 local GPSOKAY=1 --1=play Wav files for Gps Stat , 0= Disable wav Playing for Gps Status   # 
@@ -147,6 +147,9 @@ local function ResetVar()
     battype=0
     firsttime=1
     settings = getGeneralSettings()
+    data.lon=nil
+    data.lat=nil
+    
 	end
   
   
@@ -427,23 +430,6 @@ end
 -- functions calc GPS Distance
 -------------------------------------------------------------------------------
 
---     lcd.drawText(0, 55,"calcing", SMLSIZE)
---      local temptri=math.sin--locale are faster
---      local rad=math.rad
---      local temp=(temptri((rad(data.lat-data.gps["lat"]))*0.5))
---      local temp2=(temptri((rad(data.lon-data.gps["lon"]))*0.5))
---      temptri=math.cos
---      temp = temp*temp + temptri(rad(lat1)) * temptri(rad(data.lat)) * temp2*temp2
---      temptri=math.sqrt
---      gps_hori_Distance=  (12756000 * math.atan2(temptri(temp), temptri(1-temp)))
-
-
---    z1 = math.sin(data.lon - home.lon) * math.cos(data.lat)
---	  z2 = math.cos(home.lat) * math.sin(data.lat) - math.sin(home.lat) * math.cos(data.lat) * math.cos(data.lon - home.lon)
---	  hypdist =  math.sqrt( math.pow(math.abs(z1*6358364.9098634),2) + math.pow(math.abs(z2*6358364.9098634),2) )
-
-
-
 local function loadGpsData()
   if GPSOKAY==3 and (type(data.gps) == "table") then
     
@@ -452,13 +438,11 @@ local function loadGpsData()
 	  elseif data.gps["lon"] ~= nil and data.lon==nil then
 	    data.lon = data.gps["lon"]
 	  else
-      lcd.drawText(0, 47,"calc beginn",SMLSIZE) 
-  
       local sin=math.sin--locale are faster
       local cos=math.cos
       local z1 = (sin(data.lon - data.gps["lon"]) * cos(data.lat) )*6358364.9098634
 	    local z2 = (cos(data.gps["lat"]) * sin(data.lat) - sin(data.gps["lat"]) * cos(data.lat) * cos(data.lon - data.gps["lon"]) )*6358364.9098634 
-      gps_hori_Distance =  math.sqrt( z1*z1 + z2*z2)
+      gps_hori_Distance =  (math.sqrt( z1*z1 + z2*z2))/100
       
     end      
             
@@ -620,7 +604,7 @@ end
       
         
 -- ###############################################################
--- Distance TODO above rssi  Drawing
+-- Distance above rssi  Drawing
 -- ###############################################################
      if HeadingOrDist == 1 or (DisplayTimer==1 and HeadingOrDist == 2)  then
      
@@ -895,23 +879,7 @@ local function run(event)
   draw()
 end
 
-
-
-
---Debug
-local Timedebug
-function runtime(event)
-
-        Timedebug = getTime()  
-        run(event)
-        lcd.drawText(4, 20, (getTime()-Timedebug) *10, SMLSIZE)
-        Timedebug = getTime()
-        
-        lcd.drawText(4, 30, CellResistance, SMLSIZE)
-      
-
-end
 --------------------------------------------------------------------------------
 -- SCRIPT END
 --------------------------------------------------------------------------------
-return {run=runtime,  background=background}
+return {run=run,  background=background}
