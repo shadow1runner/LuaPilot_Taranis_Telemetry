@@ -18,7 +18,7 @@ This is Version 2 for the next Version 3 it’s planned to add more Screens, mor
 
 ## Screenshots
 
-
+![Welcome Screen](https://raw.githubusercontent.com/ilihack/LuaPilot_Taranis_Telemetry/master/LuaPilot.Logo.jpg)
 
 
 ![Displayed content while in GPS controlled mode](https://raw.githubusercontent.com/ilihack/LuaPilot_Taranis_Telemetry/master/LuaPilot.jpg)
