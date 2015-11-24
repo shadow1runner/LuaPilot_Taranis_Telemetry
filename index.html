@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>LuaPilot Taranis Telemetry by ilihack</title>
+    <title>LuaPilot Taranis Telemetry script by ilihack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -11,7 +11,7 @@
   </head>
   <body>
     <section class="page-header">
-      <h1 class="project-name">LuaPilot Taranis Telemetry</h1>
+      <h1 class="project-name">LuaPilot Taranis Telemetry script</h1>
       <h2 class="project-tagline">LuaPilot is a nice Taranis Telemetry screen  for Ardupilot, Arducopter, Pixhawk and more  </h2>
       <a href="https://github.com/ilihack/LuaPilot_Taranis_Telemetry" class="btn">View on GitHub</a>
       <a href="https://github.com/ilihack/LuaPilot_Taranis_Telemetry/zipball/master" class="btn">Download .zip</a>
@@ -41,8 +41,6 @@ Battery Consume, Vspeed, GPS Speed, Hdg, efficiency Calc, Background Task, flexi
 <h2>
 <a id="screenshots" class="anchor" href="#screenshots" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshots</h2>
 
-<p>Screenshots</p>
-
 <p><img src="https://raw.githubusercontent.com/ilihack/LuaPilot_Taranis_Telemetry/master/LuaPilot.Logo.jpg" alt="Welcome Screen"></p>
 
 <p><img src="https://raw.githubusercontent.com/ilihack/LuaPilot_Taranis_Telemetry/master/LuaPilot.jpg" alt="Displayed content while in GPS controlled mode"></p>
@@ -70,7 +68,7 @@ Battery Consume, Vspeed, GPS Speed, Hdg, efficiency Calc, Background Task, flexi
 </ol>
 
 <h2>
-<a id="taranis-setup-opentx-213-or-newer" class="anchor" href="#taranis-setup-opentx-213-or-newer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Taranis Setup OpenTx 2.1.3 or newer</h2>
+<a id="taranis-setup-opentx-216-or-newer" class="anchor" href="#taranis-setup-opentx-216-or-newer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Taranis Setup OpenTx 2.1.6 or newer</h2>
 
 <ol>
 <li>Make sure you have LUA-Scripting enabled in companion</li>
@@ -81,16 +79,16 @@ Battery Consume, Vspeed, GPS Speed, Hdg, efficiency Calc, Background Task, flexi
 <li>Delete all Sensors</li>
 <li>Discovery new Sensors</li>
 <li>There will be a lot of sensors listed depending on your receiver (d8r, d4r, x8r etc.)</li>
-<li>Very Recommend is to Check if the sensors Named correct especially the two Temp must be renamed so the script can make use of them. Naming is case sensitive! </li>
+<li>Recommend is to Check if the sensors Name correct. </li>
 <li>Set this lua script as Telemetry screen.</li>
 </ol>
 
 <h3>
-<a id="sensor-namens" class="anchor" href="#sensor-namens" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sensor Namens</h3>
+<a id="sensor-namen-case-sensitive" class="anchor" href="#sensor-namen-case-sensitive" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sensor Namen (case sensitive!)</h3>
 
 <ul>
-<li>VFAS -&gt; Lipo Voltage</li>
-<li>Alt -&gt; Altitude</li>
+<li>VFAS -&gt; is the Lipo Voltage</li>
+<li>Alt -&gt; is the Baro Altitude</li>
 <li>Curr -&gt; Current drain</li>
 <li>Gspd -&gt; GPS Speed</li>
 <li>Hdg -&gt; Compass Direction</li>
@@ -102,9 +100,8 @@ Battery Consume, Vspeed, GPS Speed, Hdg, efficiency Calc, Background Task, flexi
 <h3>
 <a id="using" class="anchor" href="#using" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using:</h3>
 
-<p>Push in the Normal Taranis Screen Long The Page Button to see the LuaPilot Telemetry screen.</p>
-
-<p>If you want to Reset LuaPilot because you have a new HomePosition or reset you Battery Consumm or what else Push long Menu in LuaPilot.</p>
+<p>Push in the Normal Taranis Screen Long The Page Button to see the LuaPilot Telemetry screens.
+If you want to Reset LuaPilot because you have a new HomePosition or reset you Battery Consumm or what else Push long (Menu) in the LuaPilot Screen.</p>
 
 <h2>
 <a id="useful-links" class="anchor" href="#useful-links" aria-hidden="true"><span class="octicon octicon-link"></span></a>useful links</h2>
@@ -120,7 +117,7 @@ Battery Consume, Vspeed, GPS Speed, Hdg, efficiency Calc, Background Task, flexi
 <p><a href="https://github.com/ilihack/LuaPilot_Taranis_Telemetry/archive/master.zip">https://github.com/ilihack/LuaPilot_Taranis_Telemetry/archive/master.zip</a></p>
 
       <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/ilihack/LuaPilot_Taranis_Telemetry">LuaPilot Taranis Telemetry</a> is maintained by <a href="https://github.com/ilihack">ilihack</a>.</span>
+        <span class="site-footer-owner"><a href="https://github.com/ilihack/LuaPilot_Taranis_Telemetry">LuaPilot Taranis Telemetry script</a> is maintained by <a href="https://github.com/ilihack">ilihack</a>.</span>
 
         <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
