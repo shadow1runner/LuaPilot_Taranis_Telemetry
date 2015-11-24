@@ -1,16 +1,16 @@
 # Readme
-This Script LuaPilot is a nice Telemetry screen for Taranis with openTx >2.16 and should work with Arducopter (Pixhawk, Fixhawk, AUAV-X2, etc.) and maybe others Flight controllers which are connected to an FrSky D-Receiver & X-Receiver.
+This Script LuaPilot is a nice Telemetry screen for Taranis with OpenTX >2.16 and should work with Arducopter (Pixhawk, Fixhawk, AUAV-X2, etc.) and maybe others Flight controllers which are connected to an FrSky D-Receiver & X-Receiver.
 
-Thank's to SockEye, Richardoe, Schicksie, lichtl, ben_&Jace25,Clooney82&fnoopdogg for they Previos Work.
+Thanks to SockEye, Richardoe, Schicksie, lichtl, ben_&Jace25,Clooney82&fnoopdogg for they Previous Work.
 
 
-Changlog:
+Changelog:
 
 V2:
-Performance & less Memory Consum, Better Hdg, Distance, Battery Percent Calculation with capacity, Resistance Calc & Voltage Compensation, better Battery Regresion Curve , Audio Alerts for BattVoltage,Consume,Flightmode,Max Avarage Current & GPS State
+Performance & less Memory Consume, Better Hdg, Distance, Battery Percent Calculation with capacity, Resistance Calk & Voltage Compensation, better Battery Regression Curve , Audio Alerts for LipoVoltage, Consume, Flight mode, Max Average Current & GPS State
 
 V1:
-Battery Consume, Vspeed, GPS Speed, Hdg, efficiency Calc, Background Task, flexible Configs. 
+Battery Consume, Vspeed, GPS Speed, Hdg, efficiency Calk, Background Task, flexible Setup. 
 
 Let’s improve it together and have one nice all in one Taranis Telemetry Script, made Pull Requests or if you have an issue please report it :)
 
@@ -26,30 +26,31 @@ This is Version 2 for the next Version 3 it’s planned to add more Screens, mor
 Displayed content while in GPS controlled mode
 
 #Installing:
-## Flight controller D-port Setup (only for D-Reciver)
+## Flight controller D-port Setup (only for D-receiver)
 1. Connect the Arducopter with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from EBay also works fine (watch for correct specifications)) and connect RS232 TTL level converter with your FrSky Receiver
-2. Activate the FrSky D protocol in the parameters for the appropriate port. baute rate 9kbs
+2. Activate the FrSky D protocol in the parameters for the appropriate port. Baute rate 9kbs
 
-## Flight controller S-port Setup (X-Reciver with Arducopter V3.3)
+## Flight controller S-port Setup (X-receiver with Arducopter V3.3)
 1. Connect the Pixhawk with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from EBay (MAX3232CSE also works fine & is better to solder) and connect RS232 TTL level converter with your FrSky Receiver
-2. Buy the FrSky spc cable, but its only one normal diode and you can soldering the diode direct to the RS 232 TTL converter like https://goo.gl/y9XCq8 and doesn’t need the SPC Adapter
-3. Activate the FrSky S protocol in the parameters* for the appropriate port. baute rate: 57kbs *(APMPlaner2)
+2. Buy the FrSky SPC cable, but its only one normal diode and you can soldering the diode direct to the RS 232 TTL converter like https://goo.gl/y9XCq8 and doesn’t need the SPC Adapter
+3. Activate the FrSky S protocol in the parameters* for the appropriate port. Baute rate: 57kbs *(APMPlaner2)
 
 
 
-## Taranis Setup OpenTx 2.1.6 or newer
+
+## Taranis Setup OpenTX 2.1.6 or newer
 1. Make sure you have LUA-Scripting enabled in companion
 2. Download the scripts folder from here and copy to the SD card root
-3. Optional: Edit with an txt Editor the Dowloaded Script to Change the Setup to you own Wishes
+3. Optional: Edit with a txt Editor the Downloaded Script to Change the Setup to you own Wishes
 3. Start your Taranis, go into your desired Model Settings by short pressing the Menu button
 4. Navigate to the last Page by long pressing the page button
 5. Delete all Sensors
 6. Discovery new Sensors
 7. There will be a lot of sensors listed depending on your receiver (d8r, d4r, x8r etc.)
-8. Recommend is to Check if the sensors Name correct. 
+8. Recommend is to check if the sensors Name correct. 
 9. Set this lua script as Telemetry screen.
 
-### Sensor Namen (case sensitive!)
+### Sensor Name (case sensitive!)
 * VFAS -> is the Lipo Voltage
 * Alt -> is the Baro Altitude
 * Curr -> Current drain
@@ -61,11 +62,11 @@ Displayed content while in GPS controlled mode
 
 
 ### Using:
-Push in the Normal Taranis Screen Long The Page Button to see the LuaPilot Telemetry screens.
-If you want to Reset LuaPilot because you have a new HomePosition or reset you Battery Consumm or what else Push long (Menu) in the LuaPilot Screen.
+Push in the Normal Taranis Screen Long the Page Button to see the LuaPilot Telemetry screens.
+If you want to Reset LuaPilot because you have a new Home Position or reset you Battery Consume or what else Push long (Menu) in the LuaPilot Screen.
 
 ##useful links
 1. http://copter.ardupilot.com/wiki/common-optional-hardware/common-telemetry-landingpage/common-frsky-telemetry/ (How to connect your Converter)
 
-##LuaPilot Script Dowload
+##LuaPilot Script Download
 https://github.com/ilihack/LuaPilot_Taranis_Telemetry/archive/master.zip
