@@ -1,27 +1,13 @@
--- This program is free software; you can redistribute it and/or modify
--- it under the terms of the GNU General Public License as published by
--- the Free Software Foundation; either version 2 of the License, or
--- (at your option) any later version.
---
--- This program is distributed in the hope that it will be useful,
--- but WITHOUT ANY WARRANTY, without even the implied warranty of
--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
--- GNU General Public License for more details.
---
--- You should have received a copy of the GNU General Public License
--- along with this program; if not, see <http://www.gnu.org/licenses>.
-
-
 --#########################################################################################
---#   LuaPilot v2.005  Lua Telemetry Script for Taranis B.                                #
+--#   LuaPilot v2.005  Lua Telemetry Script for Taranis                                   #
 --#                                                                                       #
 --#  + with opentx 2.16 and above, tested with D4r-II & D8R & X4R                         #
 --#  + works with Arducopter Flight  Controller like Pixhawk,APM and maybe others         #
---#                                                                                       #                                                                                     #
---#  Thanks to SockEye, Richardoe, Schicksie,lichtl			                  #    
+--#                                                                                       #
+--#  Thanks to SockEye, Richardoe, Schicksie,lichtl			                                  #    
 --#  _ben&Jace25(FPV-Community) and Clooney82&fnoopdogg                                   #
---#         									          #
---# LuaPilot © 2015 ilihack 							          #
+--#         									                                                            #
+--#  LuaPilot © 2015 ilihack 							                                                #
 --#########################################################################################
 --Setup:                                                                                  #
 --                                                                                        #
@@ -42,6 +28,19 @@ local SayFlightMode = 1 --0=off 1=on then play wav for Flightmodes changs       
 --                                                                                        #
 --######################################################################################### 
   
+  
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY, without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, see <http://www.gnu.org/licenses>.
  
 
   local function getTelemetryId(name)
