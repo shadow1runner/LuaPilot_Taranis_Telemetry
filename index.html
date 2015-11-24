@@ -22,17 +22,17 @@
       <h1>
 <a id="readme" class="anchor" href="#readme" aria-hidden="true"><span class="octicon octicon-link"></span></a>Readme</h1>
 
-<p>This Script LuaPilot is a nice Telemetry screen for Taranis with openTx &gt;2.16 and should work with Arducopter (Pixhawk, Fixhawk, AUAV-X2, etc.) and maybe others Flight controllers which are connected to an FrSky D-Receiver &amp; X-Receiver.</p>
+<p>This Script LuaPilot is a nice Telemetry screen for Taranis with OpenTX &gt;2.16 and should work with Arducopter (Pixhawk, Fixhawk, AUAV-X2, etc.) and maybe others Flight controllers which are connected to an FrSky D-Receiver &amp; X-Receiver.</p>
 
-<p>Thank's to SockEye, Richardoe, Schicksie, lichtl, ben_&amp;Jace25,Clooney82&amp;fnoopdogg for they Previos Work.</p>
+<p>Thanks to SockEye, Richardoe, Schicksie, lichtl, ben_&amp;Jace25,Clooney82&amp;fnoopdogg for they Previous Work.</p>
 
-<p>Changlog:</p>
+<p>Changelog:</p>
 
 <p>V2:
-Performance &amp; less Memory Consum, Better Hdg, Distance, Battery Percent Calculation with capacity, Resistance Calc &amp; Voltage Compensation, better Battery Regresion Curve , Audio Alerts for BattVoltage,Consume,Flightmode,Max Avarage Current &amp; GPS State</p>
+Performance &amp; less Memory Consume, Better Hdg, Distance, Battery Percent Calculation with capacity, Resistance Calk &amp; Voltage Compensation, better Battery Regression Curve , Audio Alerts for LipoVoltage, Consume, Flight mode, Max Average Current &amp; GPS State</p>
 
 <p>V1:
-Battery Consume, Vspeed, GPS Speed, Hdg, efficiency Calc, Background Task, flexible Configs. </p>
+Battery Consume, Vspeed, GPS Speed, Hdg, efficiency Calk, Background Task, flexible Setup. </p>
 
 <p>Let’s improve it together and have one nice all in one Taranis Telemetry Script, made Pull Requests or if you have an issue please report it :)</p>
 
@@ -51,40 +51,40 @@ Battery Consume, Vspeed, GPS Speed, Hdg, efficiency Calc, Background Task, flexi
 <a id="installing" class="anchor" href="#installing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing:</h1>
 
 <h2>
-<a id="flight-controller-d-port-setup-only-for-d-reciver" class="anchor" href="#flight-controller-d-port-setup-only-for-d-reciver" aria-hidden="true"><span class="octicon octicon-link"></span></a>Flight controller D-port Setup (only for D-Reciver)</h2>
+<a id="flight-controller-d-port-setup-only-for-d-receiver" class="anchor" href="#flight-controller-d-port-setup-only-for-d-receiver" aria-hidden="true"><span class="octicon octicon-link"></span></a>Flight controller D-port Setup (only for D-receiver)</h2>
 
 <ol>
 <li>Connect the Arducopter with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from EBay also works fine (watch for correct specifications)) and connect RS232 TTL level converter with your FrSky Receiver</li>
-<li>Activate the FrSky D protocol in the parameters for the appropriate port. baute rate 9kbs</li>
+<li>Activate the FrSky D protocol in the parameters for the appropriate port. Baute rate 9kbs</li>
 </ol>
 
 <h2>
-<a id="flight-controller-s-port-setup-x-reciver-with-arducopter-v33" class="anchor" href="#flight-controller-s-port-setup-x-reciver-with-arducopter-v33" aria-hidden="true"><span class="octicon octicon-link"></span></a>Flight controller S-port Setup (X-Reciver with Arducopter V3.3)</h2>
+<a id="flight-controller-s-port-setup-x-receiver-with-arducopter-v33" class="anchor" href="#flight-controller-s-port-setup-x-receiver-with-arducopter-v33" aria-hidden="true"><span class="octicon octicon-link"></span></a>Flight controller S-port Setup (X-receiver with Arducopter V3.3)</h2>
 
 <ol>
 <li>Connect the Pixhawk with a RS232 TTL level converter (not need to be a FrSky, a cheaper one from EBay (MAX3232CSE also works fine &amp; is better to solder) and connect RS232 TTL level converter with your FrSky Receiver</li>
-<li>Buy the FrSky spc cable, but its only one normal diode and you can soldering the diode direct to the RS 232 TTL converter like <a href="https://goo.gl/y9XCq8">https://goo.gl/y9XCq8</a> and doesn’t need the SPC Adapter</li>
-<li>Activate the FrSky S protocol in the parameters* for the appropriate port. baute rate: 57kbs *(APMPlaner2)</li>
+<li>Buy the FrSky SPC cable, but its only one normal diode and you can soldering the diode direct to the RS 232 TTL converter like <a href="https://goo.gl/y9XCq8">https://goo.gl/y9XCq8</a> and doesn’t need the SPC Adapter</li>
+<li>Activate the FrSky S protocol in the parameters* for the appropriate port. Baute rate: 57kbs *(APMPlaner2)</li>
 </ol>
 
 <h2>
-<a id="taranis-setup-opentx-216-or-newer" class="anchor" href="#taranis-setup-opentx-216-or-newer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Taranis Setup OpenTx 2.1.6 or newer</h2>
+<a id="taranis-setup-opentx-216-or-newer" class="anchor" href="#taranis-setup-opentx-216-or-newer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Taranis Setup OpenTX 2.1.6 or newer</h2>
 
 <ol>
 <li>Make sure you have LUA-Scripting enabled in companion</li>
 <li>Download the scripts folder from here and copy to the SD card root</li>
-<li>Optional: Edit with an txt Editor the Dowloaded Script to Change the Setup to you own Wishes</li>
+<li>Optional: Edit with a txt Editor the Downloaded Script to Change the Setup to you own Wishes</li>
 <li>Start your Taranis, go into your desired Model Settings by short pressing the Menu button</li>
 <li>Navigate to the last Page by long pressing the page button</li>
 <li>Delete all Sensors</li>
 <li>Discovery new Sensors</li>
 <li>There will be a lot of sensors listed depending on your receiver (d8r, d4r, x8r etc.)</li>
-<li>Recommend is to Check if the sensors Name correct. </li>
+<li>Recommend is to check if the sensors Name correct. </li>
 <li>Set this lua script as Telemetry screen.</li>
 </ol>
 
 <h3>
-<a id="sensor-namen-case-sensitive" class="anchor" href="#sensor-namen-case-sensitive" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sensor Namen (case sensitive!)</h3>
+<a id="sensor-name-case-sensitive" class="anchor" href="#sensor-name-case-sensitive" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sensor Name (case sensitive!)</h3>
 
 <ul>
 <li>VFAS -&gt; is the Lipo Voltage</li>
@@ -100,8 +100,8 @@ Battery Consume, Vspeed, GPS Speed, Hdg, efficiency Calc, Background Task, flexi
 <h3>
 <a id="using" class="anchor" href="#using" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using:</h3>
 
-<p>Push in the Normal Taranis Screen Long The Page Button to see the LuaPilot Telemetry screens.
-If you want to Reset LuaPilot because you have a new HomePosition or reset you Battery Consumm or what else Push long (Menu) in the LuaPilot Screen.</p>
+<p>Push in the Normal Taranis Screen Long the Page Button to see the LuaPilot Telemetry screens.
+If you want to Reset LuaPilot because you have a new Home Position or reset you Battery Consume or what else Push long (Menu) in the LuaPilot Screen.</p>
 
 <h2>
 <a id="useful-links" class="anchor" href="#useful-links" aria-hidden="true"><span class="octicon octicon-link"></span></a>useful links</h2>
@@ -112,7 +112,7 @@ If you want to Reset LuaPilot because you have a new HomePosition or reset you B
 </ol>
 
 <h2>
-<a id="luapilot-script-dowload" class="anchor" href="#luapilot-script-dowload" aria-hidden="true"><span class="octicon octicon-link"></span></a>LuaPilot Script Dowload</h2>
+<a id="luapilot-script-download" class="anchor" href="#luapilot-script-download" aria-hidden="true"><span class="octicon octicon-link"></span></a>LuaPilot Script Download</h2>
 
 <p><a href="https://github.com/ilihack/LuaPilot_Taranis_Telemetry/archive/master.zip">https://github.com/ilihack/LuaPilot_Taranis_Telemetry/archive/master.zip</a></p>
 
