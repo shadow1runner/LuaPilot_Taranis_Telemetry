@@ -37,7 +37,7 @@ Displayed content while in GPS controlled mode
 
 
 
-## Taranis Setup OpenTx 2.1.3 or newer
+## Taranis Setup OpenTx 2.1.6 or newer
 1. Make sure you have LUA-Scripting enabled in companion
 2. Download the scripts folder from here and copy to the SD card root
 3. Optional: Edit with an txt Editor the Dowloaded Script to Change the Setup to you own Wishes
@@ -46,12 +46,12 @@ Displayed content while in GPS controlled mode
 5. Delete all Sensors
 6. Discovery new Sensors
 7. There will be a lot of sensors listed depending on your receiver (d8r, d4r, x8r etc.)
-8. Very Recommend is to Check if the sensors Named correct especially the two Temp must be renamed so the script can make use of them. Naming is case sensitive! 
+8. Recommend is to Check if the sensors Name correct. 
 9. Set this lua script as Telemetry screen.
 
-### Sensor Namens
-* VFAS -> Lipo Voltage
-* Alt -> Altitude
+### Sensor Namen (case sensitive!)
+* VFAS -> is the Lipo Voltage
+* Alt -> is the Baro Altitude
 * Curr -> Current drain
 * Gspd -> GPS Speed
 * Hdg -> Compass Direction
@@ -61,10 +61,8 @@ Displayed content while in GPS controlled mode
 
 
 ### Using:
-
 Push in the Normal Taranis Screen Long The Page Button to see the LuaPilot Telemetry screens.
-
-If you want to Reset LuaPilot because you have a new HomePosition or Reset you Battery Consumm or what else Push long Menu in LuaPilot.
+If you want to Reset LuaPilot because you have a new HomePosition or reset you Battery Consumm or what else Push long (Menu) in the LuaPilot Screen.
 
 ##useful links
 1. http://copter.ardupilot.com/wiki/common-optional-hardware/common-telemetry-landingpage/common-frsky-telemetry/ (How to connect your Converter)
