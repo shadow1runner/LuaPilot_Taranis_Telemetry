@@ -545,7 +545,7 @@ end
    if (HVlipoDetected == 1 and data.battsum >=10) then
      lcd.drawNumber(0,57, data.battsum,PREC1+ LEFT )
    else
-     lcd.drawNumber(0,57, data.battsum,PREC2 + LEFT )
+     lcd.drawNumber(0,57, data.battsum*100,PREC2 + LEFT )
    end
 
 
