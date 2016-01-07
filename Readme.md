@@ -1,5 +1,5 @@
 # Readme
-This Script LuaPilot is a nice Telemetry screen for Taranis with OpenTX >2.16 and should work with Arducopter (Pixhawk, Fixhawk, AUAV-X2, etc.) and maybe others Flight controllers which are connected to an FrSky D-Receiver & X-Receiver.
+This Script LuaPilot is a nice Telemetry screen for Taranis with OpenTX >2.17 and should work with Arducopter (Pixhawk, Fixhawk, AUAV-X2, etc.) and maybe others Flight controllers which are connected to an FrSky D-Receiver & X-Receiver.
 
 Thanks to SockEye, Richardoe, Schicksie, lichtl, ben_&Jace25,Clooney82&fnoopdogg for they Previous Work.
 
