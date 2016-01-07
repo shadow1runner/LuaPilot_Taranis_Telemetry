@@ -1,5 +1,5 @@
 --#########################################################################################
---#   LuaPilot v2.005  Lua Telemetry Script for Taranis                                   #
+--#   LuaPilot v2.006  Lua Telemetry Script for Taranis                                   #
 --#                                                                                       #
 --#  + with opentx 2.16 and above, tested with D4r-II & D8R & X4R                         #
 --#  + works with Arducopter Flight  Controller like Pixhawk,APM and maybe others         #
@@ -543,7 +543,7 @@ end
      end
   
    if (HVlipoDetected == 1 and data.battsum >=10) then
-     lcd.drawNumber(0,57, data.battsum,PREC1+ LEFT )
+     lcd.drawNumber(0,57, data.battsum*10,PREC1+ LEFT )
    else
      lcd.drawNumber(0,57, data.battsum*100,PREC2 + LEFT )
    end
