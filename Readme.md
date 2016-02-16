@@ -54,7 +54,7 @@ Displayed content while in GPS controlled mode
 * VFAS -> is the Lipo Voltage
 * Alt -> is the Baro Altitude
 * Curr -> Current drain
-* Gspd -> GPS Speed
+* GSpd -> GPS Speed
 * Hdg -> Compass Direction
 * Tmp1 -> Flight mode (small Numbers)
 * Tmp2 -> GPS Fix (something like 103 for 10 satellites’ and 3d fix or 93 for 9 satellites’ and 3d fix)
