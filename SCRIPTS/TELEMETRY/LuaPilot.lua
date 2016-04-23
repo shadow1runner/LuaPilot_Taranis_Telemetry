@@ -724,40 +724,53 @@ end
 
 local FlightModeName = {}
 
-    FlightModeName[0]="Stabilize"
-    FlightModeName[1]="Acro Mode"
-    FlightModeName[2]="Alt Hold"
-    FlightModeName[3]="Auto Mode"
-    FlightModeName[4]="Guided Mode"
-    FlightModeName[5]="Loiter Mode"
-    FlightModeName[6]="RTL Mode"
-    FlightModeName[7]="Circle Mode"
-    FlightModeName[8]="Invalid Mode"
-    FlightModeName[9]="Landing Mode"
-    FlightModeName[10]="Optic Loiter"
-    FlightModeName[11]="Drift Mode"
-    FlightModeName[12]="Invalid Mode"
-    FlightModeName[13]="Sport Mode"
-    FlightModeName[14]="Flip Mode"
-    FlightModeName[15]="Auto Tune"
-    FlightModeName[16]="Pos Hold"
-    FlightModeName[17]="Brake Mode"
-    FlightModeName[18]="No Telemetry"
+	-- APM Flight Modes
+	FlightModeName[0]="Stabilize"
+	FlightModeName[1]="Acro Mode"
+	FlightModeName[2]="Alt Hold"
+	FlightModeName[3]="Auto Mode"
+	FlightModeName[4]="Guided Mode"
+	FlightModeName[5]="Loiter Mode"
+	FlightModeName[6]="RTL Mode"
+	FlightModeName[7]="Circle Mode"
+	FlightModeName[8]="Invalid Mode"
+	FlightModeName[9]="Landing Mode"
+	FlightModeName[10]="Optic Loiter"
+	FlightModeName[11]="Drift Mode"
+	FlightModeName[12]="Invalid Mode"
+	FlightModeName[13]="Sport Mode"
+	FlightModeName[14]="Flip Mode"
+	FlightModeName[15]="Auto Tune"
+	FlightModeName[16]="Pos Hold"
+	FlightModeName[17]="Brake Mode"
+	
+	-- PX4 Flight Modes
+	FlightModeName[18]="Manual"
+	FlightModeName[19]="Acro"
+	FlightModeName[20]="Stabilized"
+	FlightModeName[21]="RAttitude"
+	FlightModeName[22]="Pos Control"
+	FlightModeName[23]="Alt Control"
+	FlightModeName[24]="Offb Control"
+	FlightModeName[25]="Auto Takeoff"
+	FlightModeName[26]="Auto Pause"
+	FlightModeName[27]="Auto Mission"
+	FlightModeName[28]="Auto RTL"
+	FlightModeName[29]="Auto Landing"
+	
+	FlightModeName[30]="No Telemetry"
     
-  if data.flightmodeNr < 0 or data.flightmodeNr > 17 then
+  if data.flightmodeNr < 0 or data.flightmodeNr > 30 then
       data.flightmodeNr=12    
   
     elseif data.flightmodeId ==-1 or ( rxpercent==0 and data.flightmodeNr==0 )then
-      data.flightmodeNr=18
+      data.flightmodeNr=30
   end
     
     
     drawText(68, 1, FlightModeName[data.flightmodeNr], MIDSIZE)
     
     if data.flightmodeNr~=lastflightModeNumber and SayFlightMode == 1 then
-      if data.flightmodeNr==6 or data.flightmodeNr==9 then 
-       playFile("/SCRIPTS/WAV/AVFM"..data.flightmodeNr.."A.wav") 
-      end
       playFile("/SCRIPTS/WAV/AVFM"..data.flightmodeNr.."A.wav")
     lastflightModeNumber=data.flightmodeNr
   end
@@ -767,9 +780,9 @@ local FlightModeName = {}
 -- Flightmode Image
 -- ###############################################################
 
-    if data.flightmodeNr == 6 or data.flightmodeNr == 9 then
+    if data.flightmodeNr == 6 or data.flightmodeNr == 9 or data.flightmodeNr == 28 or data.flightmodeNr == 29 then
       lcd.drawPixmap(50, 2, "/SCRIPTS/BMP/H.bmp")  
-    elseif data.flightmodeNr >= 0 and data.flightmodeNr <= 2 then
+    elseif (data.flightmodeNr >= 0 and data.flightmodeNr <= 2) or (data.flightmodeNr >= 18 and data.flightmodeNr <= 23) then
       lcd.drawPixmap(50, 2, "/SCRIPTS/BMP/stab.bmp")
     elseif data.flightmodeNr~=-1 or data.flightmodeNr~=12 then
       lcd.drawPixmap(50, 2, "/SCRIPTS/BMP/gps.bmp")
