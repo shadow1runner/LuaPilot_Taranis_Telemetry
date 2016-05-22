@@ -61,6 +61,9 @@ Displayed content while in GPS controlled mode
 * RSSI -> Rssi Value
 
 
+### Optional Setup LuaPilot:
+open the script with an txt editor and you can modify at the beginn of the script allot of Parameters.
+
 ### Using:
 Push in the Normal Taranis Screen Long the Page Button to see the LuaPilot Telemetry screens.
 If you want to Reset LuaPilot because you have a new Home Position or reset you Battery Consume or what else Push long (Menu) in the LuaPilot Screen.
