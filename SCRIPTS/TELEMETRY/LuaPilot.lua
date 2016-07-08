@@ -553,7 +553,7 @@ end
       drawText(getLastPos(), 57,"H", BLINK, 0) 
     end
     drawText(getLastPos(), 57, "V ", 0)
-    drawText(getLastPos(), 58, battype.."s" , SMLSIZE)
+    drawText(getLastPos(), 58, battype.."S" , SMLSIZE)
    
 
 -- ###############################################################
