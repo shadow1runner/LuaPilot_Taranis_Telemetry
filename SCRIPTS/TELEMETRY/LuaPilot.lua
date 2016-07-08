@@ -522,22 +522,15 @@ local function draw()
     rxPercent = 0
   end
 
-  lcd.drawPixmap(164, 6, "/SCRIPTS/BMP/RSSI"..math.ceil(rxPercent*0.1)..".bmp") --Round rxPercent to the next higer 10 Percent number and search&draw pixmap
+  lcd.drawPixmap(164, 8, "/SCRIPTS/BMP/RSSI"..math.ceil(rxPercent*0.1)..".bmp") --Round rxPercent to the next higer 10 Percent number and search&draw pixmap
 
   drawText(184, 57, rxPercent, 0) 
   drawText(getLastPos(), 58, "% RX", SMLSIZE)
 
   -- ###############################################################
-  -- Timer Drawing 
-  -- ###############################################################
-  -- local timer = model.getTimer(0)
-  -- drawText(36, 44, " Timer : ",SMLSIZE)
-  -- lcd.drawTimer(getLastPos(), 40, timer.value, MIDSIZE)
-
-  -- ###############################################################
   -- Vertical Speed Drawing
   -- ###############################################################
-  drawText(36,44, "vSpeed: ",SMLSIZE)
+  drawText(34, 44, "vSpeed: ",SMLSIZE)
 
   if settings['imperial'] ~= 0 then
     drawText(getLastPos(), 40, round(vSpeed*3.28,1) , MIDSIZE) 
@@ -566,9 +559,9 @@ local function draw()
   -- ###############################################################
   if headingOrDist == 1 or (displayTimer ==1 and headingOrDist == 2)  then
     if settings['imperial'] ~= 0 then
-      drawText(163,0, "Dist: "..(round(gpsHorizontalDistance)).." f",SMLSIZE)
+      drawText(169,0, "Dist: "..(round(gpsHorizontalDistance)).." f",SMLSIZE)
     else
-      drawText(163,0, "Dist: "..(round(gpsHorizontalDistance)).." m",SMLSIZE)
+      drawText(169,0, "Dist: "..(round(gpsHorizontalDistance)).." m",SMLSIZE)
     end
   -- ###############################################################
   -- Heading  above rssi Drawing
@@ -588,10 +581,16 @@ local function draw()
     elseif data.heading <= 360.0 then HdgOrt = "N"
     end
 
-    drawText(175,0, HdgOrt.." "..data.heading,SMLSIZE)
+    drawText(178,0, HdgOrt.." "..data.heading, SMLSIZE)
     drawText(getLastPos(), -2, 'o', SMLSIZE)  
   end
 
+  -- ###############################################################
+  -- Timer Drawing 
+  -- ###############################################################
+  local timer = model.getTimer(0)
+  -- drawText(160, 6, "Time: ",SMLSIZE)
+  lcd.drawTimer(178, 8, timer.value, SMLSIZE)
 
   -- ###############################################################
   -- Altitude Drawing
