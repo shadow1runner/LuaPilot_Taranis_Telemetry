@@ -2,7 +2,7 @@
 --#   LuaPilot v2.006  Lua Telemetry Script for Taranis                                   #
 --#                                                                                       #
 --#  + with opentx 2.16 and above, tested with D4r-II & D8R & X4R                         #
---#  + works with Arducopter Flight  Controller like Pixhawk,APM and maybe others         #
+--#  + works with Arducopter Flight  Controller like Pixhawk, APM and maybe others         #
 --#                                                                                       #
 --#  Thanks to SockEye, Richardoe, Schicksie,lichtl			                                  #    
 --#  _ben&Jace25(FPV-Community) and Clooney82&fnoopdogg                                   #
@@ -17,14 +17,15 @@ local SaybatteryPercent=1 ---0=off or 1 if you will hear you Batterypercent in 1
 local CellVoltAlarm=3.3 --0=off or like 3.3 to get an Alarm if you have less than 3.3V    #                            
 --                                                                                        #
 --#########################################################################################                                                  
--- Advance Configs:                                                                       #
+-- Advanced Configs:                                                                       #
 --                                                                                        #
-local MaxAvarageAmpere=0 -- 0=Off, Alarm if the avarage 5s current is over this Value     #
-local CalcBattResistance=0 --0=off 1=AutoCalc Lipo Resistance an correct Lipo.Level ALPHA #   
-local battype=0   -- 0=Autodetection (1s,2s,3s,4s,6s,8s) or 7 for an 7s Battery Conf      #
-local BattLevelmAh = 0 --if 0 BatteryLevel calc from Volt else from this mAh Value        #
-local GPSOKAY=1 --1=play Wav files for Gps Stat , 0= Disable wav Playing for Gps Status   # 
-local SayFlightMode = 1 --0=off 1=on then play wav for Flightmodes changs                 #
+local MaxAvarageAmpere=0          -- 0=Off, Alarm if the avarage 5s current is over this Value     #
+local CalcBattResistance=0        -- 0=off 1=AutoCalc Lipo Resistance an correct Lipo.Level ALPHA #
+local battype=0                   -- 0=Autodetection (1s,2s,3s,4s,6s,8s) or 7 for an 7s Battery Conf      #
+local BattLevelmAh = 5000         -- if 0 BatteryLevel calc from Volt else from this mAh Value        #
+local GPSOKAY=1                   -- 1=play Wav files for Gps Stat , 0= Disable wav Playing for Gps Status   #
+local SayFlightMode = 1           -- 0=off 1=on then play wav for Flightmodes changes                 #
+local BattCriticalPercentage = 10 -- battery level (in %) which is the threshold to a critical low battery #
 --                                                                                        #
 --######################################################################################### 
   
@@ -82,7 +83,7 @@ local SayFlightMode = 1 --0=off 1=on then play wav for Flightmodes changs       
   local prevAlt = 0.0
 
   --intit Battery and consume
-  local totalbatteryComsum = 0.0
+  local totalBatteryConsumption = 0.0
   local HVlipoDetected = 0 
   local battpercent = 0
   local CellVolt=0.0
@@ -141,7 +142,7 @@ local function ResetVar()
     Time={0,0,0,0,0,0}
     Vspeed = 0.0
     prevAlt = 0.0
-    totalbatteryComsum = 0.0
+    totalBatteryConsumption = 0.0
     battpercent = 0
     CellVolt=0.0
     CurrA={}
@@ -185,7 +186,7 @@ local function SayBattPercent()
       lastsaynbattpercent=(round(battpercent*0.1)*10)
       Time[6] = 0
       playNumber(round(lastsaynbattpercent), 8, 0)
-      if lastsaynbattpercent <= 10 then 
+      if lastsaynbattpercent <= BattCriticalPercentage then 
         playFile("batcrit.wav") 
       end
     end
@@ -324,7 +325,7 @@ end
 --------------------------------------------------------------------------------
   local function BatteryLevelCalcmah()  --calc Battery Percent with mah comsume
     if BattLevelmAh~=0 then
-      battpercent= round((100/BattLevelmAh)*(BattLevelmAh-totalbatteryComsum))  
+      battpercent= round((100/BattLevelmAh)*(BattLevelmAh-totalBatteryConsumption))  
     end
     if battpercent<0 then battpercent=0 end
     if battpercent>100 then battpercent=100 end
@@ -367,17 +368,17 @@ end
    local function totalConsume()
       Time[1] = Time[1] + (getTime() - oldTime[1])
       if Time[1] >=20 then --200 ms
-        totalbatteryComsum  = totalbatteryComsum + ( data.current * (Time[1]/360))
+        totalBatteryConsumption  = totalBatteryConsumption + ( data.current * (Time[1]/360))
         Time[1] = 0
       end
       oldTime[1] = getTime() 
     end
 
 --------------------------------------------------------------------------------
--- function check if BatterymahAlarm  max reached totalbatteryComsum 
+-- function check if BatterymahAlarm  max reached totalBatteryConsumption 
 --------------------------------------------------------------------------------
   local function AlarmifmaxMah()
-    if BatterymahAlarm  > 0 and BatterymahAlarm < totalbatteryComsum then 
+    if BatterymahAlarm  > 0 and BatterymahAlarm < totalBatteryConsumption then 
       playFile("battcns.wav")
       BatterymahAlarm=0
     end
@@ -680,7 +681,7 @@ end
 -- CurrentTotal Draw Consum Drawing
 -- ###############################################################
  
-    drawText(46, 58, "Used: "..(round(totalbatteryComsum))..'mAh',SMLSIZE)
+    drawText(46, 58, "Used: "..(round(totalBatteryConsumption))..'mAh',SMLSIZE)
    
   
 -- ###############################################################
