@@ -559,9 +559,9 @@ local function draw()
   -- ###############################################################
   if headingOrDist == 1 or (displayTimer ==1 and headingOrDist == 2)  then
     if settings['imperial'] ~= 0 then
-      drawText(169,0, "Dist: "..(round(gpsHorizontalDistance)).." f",SMLSIZE)
+      drawText(167,0, "Dist: "..(round(gpsHorizontalDistance)).." f",SMLSIZE)
     else
-      drawText(169,0, "Dist: "..(round(gpsHorizontalDistance)).." m",SMLSIZE)
+      drawText(167,0, "Dist: "..(round(gpsHorizontalDistance)).." m",SMLSIZE)
     end
   -- ###############################################################
   -- Heading  above rssi Drawing
@@ -590,7 +590,7 @@ local function draw()
   -- ###############################################################
   local timer = model.getTimer(0)
   -- drawText(160, 6, "Time: ",SMLSIZE)
-  lcd.drawTimer(178, 8, timer.value, SMLSIZE)
+  lcd.drawTimer(176, 8, timer.value, SMLSIZE)
 
   -- ###############################################################
   -- Altitude Drawing
@@ -628,14 +628,14 @@ local function draw()
   if data.spd > 10 then --draw wh per km
     if settings['imperial'] == 0 then
       efficiency = efficiency*0.8+(0.2*(data.current*data.battsum/data.spd))--spdint can not be 0 because the previus if
-      drawText(98, 58,"  Effic: "..round(efficiency,1)..' Wh/km', SMLSIZE)
+      drawText(98, 58,"Effic: "..round(efficiency,1)..' Wh/km', SMLSIZE)
     else
       efficiency = efficiency*0.8+(0.2*(data.current*data.battsum/(data.spd*0.621371)))
-      drawText(98, 58,"  Effic: "..round(efficiency,1)..' Wh/mi', SMLSIZE) 
+      drawText(98, 58,"Effic: "..round(efficiency,1)..' Wh/mi', SMLSIZE) 
     end
   else --draw wh per h
    efficiency = efficiency*0.8+0.2*(data.current*data.battsum)
-   drawText(104, 58, " Power: "..(round(efficiency,1))..' W', SMLSIZE)
+   drawText(114, 58, "Power: "..(round(efficiency,1))..' W', SMLSIZE)
   end
 
   -- ###############################################################
