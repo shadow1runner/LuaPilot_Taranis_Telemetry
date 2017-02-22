@@ -4,10 +4,10 @@
 --#  + with opentx 2.16 and above, tested with D4r-II & D8R & X4R                         #
 --#  + works with Arducopter Flight  Controller like Pixhawk,APM and maybe others         #
 --#                                                                                       #
---#  Thanks to SockEye, Richardoe, Schicksie,lichtl			                                  #    
+--#  Thanks to SockEye, Richardoe, Schicksie,lichtl                                       #    
 --#  _ben&Jace25(FPV-Community) and Clooney82&fnoopdogg                                   #
---#         									                                                            #
---#  LuaPilot © 2015 ilihack 							                                                #
+--#                                                                                       #
+--#  LuaPilot © 2015 ilihack                                                              #
 --#########################################################################################
 --Setup:                                                                                  #
 --                                                                                        #
@@ -570,7 +570,7 @@ end
       drawText(getLastPos(), 57,"H", BLINK, 0) 
     end
     drawText(getLastPos(), 57, "V ", 0)
-    drawText(getLastPos(), 58, battype.."s" , SMLSIZE)
+    drawText(getLastPos(), 58, battype.."S" , SMLSIZE)
    
 
 -- ###############################################################
