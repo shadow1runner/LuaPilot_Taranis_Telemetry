@@ -108,6 +108,18 @@ local SayFlightMode = 1 --0=off 1=on then play wav for Flightmodes changs       
   local firsttime=0
   local DisplayTimer=0
   local settings = getGeneralSettings()
+
+  --init compass arrow
+  local arrowLine = {
+		{-4, 5, 0, -4},
+		{-3, 5, 0, -3},
+		{-2, 5, 0, -2},
+		{-1, 5, 0, -1},
+		{1, 5, 0, -1},
+		{2, 5, 0, -2},
+		{3, 5, 0, -3},
+		{4, 5, 0, -4}
+  }
 --Script Initiation end  
 
   
@@ -652,6 +664,25 @@ end
     drawText(175,0, HdgOrt.." "..data.heading,SMLSIZE)
     drawText(getLastPos(), -2, 'o', SMLSIZE)  
   end
+
+
+-- ###############################################################
+-- Display Compass arrow data
+-- ###############################################################
+
+    sinCorr = math.sin(math.rad(data.heading))
+    cosCorr = math.cos(math.rad(data.heading))
+    for index, point in pairs(arrowLine) do
+        X1 = 150 + math.floor(point[1] * cosCorr - point[2] * sinCorr + 0.5)
+        Y1 = 5 + math.floor(point[1] * sinCorr + point[2] * cosCorr + 0.5)
+        X2 = 150 + math.floor(point[3] * cosCorr - point[4] * sinCorr + 0.5)
+        Y2 = 5 + math.floor(point[3] * sinCorr + point[4] * cosCorr + 0.5)
+        if X1 == X2 and Y1 == Y2 then
+            lcd.drawPoint(X1, Y1, SOLID, FORCE)
+        else
+            lcd.drawLine (X1, Y1, X2, Y2, SOLID, FORCE)
+        end
+    end
    
    
 -- ###############################################################
