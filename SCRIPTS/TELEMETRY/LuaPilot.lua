@@ -51,11 +51,13 @@ local SayFlightMode = 1 --0=off 1=on then play wav for Flightmodes changs       
 
   
   local data = {}
-  data.battsumid =    getTelemetryId("VFAS")
+        --data.battsumid =    getTelemetryId("VFAS")
+	data.vfasid =       getTelemetryId("VFAS")
+	data.celsid =       getTelemetryId("Cels")
  	data.altid =        getTelemetryId("Alt")
---data.gpsaltid =     getTelemetryId("GAlt") 
+        --data.gpsaltid =     getTelemetryId("GAlt") 
 	data.spdid =        getTelemetryId("GSpd")
-  data.gpsid =        getTelemetryId("GPS")
+        data.gpsid =        getTelemetryId("GPS")
 	data.currentid =    getTelemetryId("Curr")
 	data.flightmodeId = getTelemetryId("Tmp1")
 	data.rssiId =       getTelemetryId("RSSI")
@@ -127,16 +129,18 @@ local SayFlightMode = 1 --0=off 1=on then play wav for Flightmodes changs       
 -------------------------------------------------------------------------------
 local function ResetVar() 
   
-  data.battsumid =    getTelemetryId("VFAS")
- 	data.altid =        getTelemetryId("Alt")
---data.gpsaltid =     getTelemetryId("GAlt") 
-	data.spdid =        getTelemetryId("GSpd")
-  data.gpsid =        getTelemetryId("GPS")
-	data.currentid =    getTelemetryId("Curr")
-	data.flightmodeId = getTelemetryId("Tmp1")
-	data.rssiId =       getTelemetryId("RSSI")
-	data.gpssatsid =    getTelemetryId("Tmp2")
-	data.headingid =    getTelemetryId("Hdg")
+    --data.battsumid =    getTelemetryId("VFAS")
+    data.vfasid =       getTelemetryId("VFAS")
+    data.celsid =       getTelemetryId("Cels")
+    data.altid =        getTelemetryId("Alt")
+    --data.gpsaltid =     getTelemetryId("GAlt") 
+    data.spdid =        getTelemetryId("GSpd")
+    data.gpsid =        getTelemetryId("GPS")
+    data.currentid =    getTelemetryId("Curr")
+    data.flightmodeId = getTelemetryId("Tmp1")
+    data.rssiId =       getTelemetryId("RSSI")
+    data.gpssatsid =    getTelemetryId("Tmp2")
+    data.headingid =    getTelemetryId("Hdg")
   
     Time={0,0,0,0,0,0}
     Vspeed = 0.0
@@ -158,8 +162,7 @@ local function ResetVar()
     settings = getGeneralSettings()
     data.lon=nil
     data.lat=nil
-    
-	end
+end
   
   
 --------------------------------------------------------------------------------
@@ -196,7 +199,7 @@ local function SayBattPercent()
     Time[6] = 0
     oldTime[6] = getTime() 
   end
-  
+
 end
  
  
@@ -460,13 +463,23 @@ end
 
 
 --------------------------------------------------------------------------------
--- function Get new Telemetry Valeu 
+-- function Get new Telemetry Value
 --------------------------------------------------------------------------------
-  local function GetnewTelemetryValue()
-    
-    local getValue = getValue --faster
-    
-    data.battsum =    getValue(data.battsumid)
+local function GetnewTelemetryValue()
+local getValue = getValue --faster
+
+--if Cels is available from FrSky FLVSS then use it, else use VFAS
+local cellResult = getValue(data.celsid)
+   if (type(cellResult) == "table") then
+      data.battsum = 0
+      for i, v in ipairs(cellResult) do
+         data.battsum = data.battsum + v
+      end
+      else
+      data.battsum =    getValue(data.vfasid)
+   end
+
+    --data.battsum =    getValue(data.battsumid)
     data.alt =        getValue(data.altid)
     data.spd =        getValue(data.spdid) --knotes per h 
     data.current =    getValue(data.currentid)
@@ -475,15 +488,7 @@ end
     data.gpssatcount =getValue(data.gpssatsid)
     data.gps =        getValue(data.gpsid)
     data.heading =    getValue(data.headingid)
-  end
-    
-
-    
-    
-    
-    
-    
-    
+end
     
     
     
@@ -677,10 +682,14 @@ end
    
    
 -- ###############################################################
--- CurrentTotal Draw Consum Drawing
+-- CurrentTotal Draw Consum Drawing AND single cell voltage
 -- ###############################################################
  
-    drawText(46, 58, "Used: "..(round(totalbatteryComsum))..'mAh',SMLSIZE)
+   if DisplayTimer==1 then
+      drawText(46, 58, "Used: "..(round(totalbatteryComsum))..'mAh',SMLSIZE)
+      elseif DisplayTimer==0 then
+         drawText(46, 58, "Cell: "..(CellVolt)..'V',SMLSIZE)
+   end
    
   
 -- ###############################################################
