@@ -27,8 +27,8 @@ local GPSOKAY=1 --1=play Wav files for Gps Stat , 0= Disable wav Playing for Gps
 local SayFlightMode = 1 --0=off 1=on then play wav for Flightmodes changs                 #
 --                                                                                        #
 --######################################################################################### 
-  
-  
+
+
 -- This program is free software; you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
 -- the Free Software Foundation; either version 2 of the License, or
@@ -41,7 +41,7 @@ local SayFlightMode = 1 --0=off 1=on then play wav for Flightmodes changs       
 --
 -- You should have received a copy of the GNU General Public License
 -- along with this program; if not, see <http://www.gnu.org/licenses>.
- 
+
 
   local function getTelemetryId(name)
    field = getFieldInfo(name)
@@ -49,31 +49,32 @@ local SayFlightMode = 1 --0=off 1=on then play wav for Flightmodes changs       
     return -1
   end
 
-  
-  local data = {}
-	--data.battsumid =    getTelemetryId("VFAS")
-	data.vfasid =       getTelemetryId("VFAS")
-	data.celsid =       getTelemetryId("Cels")
-	data.altid =        getTelemetryId("Alt")
-	--data.gpsaltid =     getTelemetryId("GAlt") 
-	data.spdid =        getTelemetryId("GSpd")
-	data.gpsid =        getTelemetryId("GPS")
-	data.currentid =    getTelemetryId("Curr")
-	data.flightmodeId = getTelemetryId("Tmp1")
-	data.rssiId =       getTelemetryId("RSSI")
-	data.gpssatsid =    getTelemetryId("Tmp2")
-	data.headingid =    getTelemetryId("Hdg")
-  
-  
-	--init Telemetry Variables 
-	data.battsum =    0
-	data.alt =        0
-	data.spd =        0
-	data.current =    0
-	data.flightmodeNr=0
-	data.rssi =       0
-	data.gpssatcount =0
-	data.heading =    0
+
+local data = {}
+  --data.battsumid =    getTelemetryId("VFAS")
+  data.vfasid =       getTelemetryId("VFAS")
+  data.celsid =       getTelemetryId("Cels")
+  data.altid =        getTelemetryId("Alt")
+  --data.gpsaltid =     getTelemetryId("GAlt") 
+  data.spdid =        getTelemetryId("GSpd")
+  data.gpsid =        getTelemetryId("GPS")
+  data.currentid =    getTelemetryId("Curr")
+  data.flightmodeId = getTelemetryId("Tmp1")
+  data.rssiId =       getTelemetryId("RSSI")
+  data.gpssatsid =    getTelemetryId("Tmp2")
+  data.headingid =    getTelemetryId("Hdg")
+
+
+  --init Telemetry Variables 
+  data.battsum =    0
+  data.cellnum =    0
+  data.alt =        0
+  data.spd =        0
+  data.current =    0
+  data.flightmodeNr=0
+  data.rssi =       0
+  data.gpssatcount =0
+  data.heading =    0
 
   --init Timer
   local oldTime={0,0,0,0,0,0}
@@ -111,14 +112,14 @@ local SayFlightMode = 1 --0=off 1=on then play wav for Flightmodes changs       
 
   --init compass arrow
   local arrowLine = {
-		{-4, 5, 0, -4},
-		{-3, 5, 0, -3},
-		{-2, 5, 0, -2},
-		{-1, 5, 0, -1},
-		{1, 5, 0, -1},
-		{2, 5, 0, -2},
-		{3, 5, 0, -3},
-		{4, 5, 0, -4}
+    {-4, 5, 0, -4},
+    {-3, 5, 0, -3},
+    {-2, 5, 0, -2},
+    {-1, 5, 0, -1},
+    {1, 5, 0, -1},
+    {2, 5, 0, -2},
+    {3, 5, 0, -3},
+    {4, 5, 0, -4}
   }
 --Script Initiation end  
 
@@ -189,7 +190,7 @@ end
 local function SayBattPercent()  
 
   if (battpercent < (lastsaynbattpercent-10)) then --only say in 10 % steps
-       
+
     Time[6] = Time[6] + (getTime() - oldTime[6]) 
         
     if Time[6]> 700 then --and only say if battpercent 10 % below for more than 10sec
@@ -200,9 +201,9 @@ local function SayBattPercent()
         playFile("batcrit.wav") 
       end
     end
-    
+
     oldTime[6] = getTime() 
-  
+
   else    
     Time[6] = 0
     oldTime[6] = getTime() 
@@ -237,25 +238,23 @@ local temp = 0.0 --Valueholder
 --------------------------------------------------------------------------------
 -- funnction Lipo Cell Dection 
 --------------------------------------------------------------------------------
-   local function BatteryCalcCellVoltageAndTyp()  
-       
-       if math.ceil(data.battsum/4.37) > battype and data.battsum<4.37*8 then 
-          battype=math.ceil(data.battsum/4.37)
-         
-          if battype==7 then battype=8 end--dont Support 5s&7s Battery, its Danger to Detect: if you have an Empty 8s its lock like an 7s...
-          if battype==5 then battype=6 end 
-         
-          if data.battsum > 4.22*battype then --HVLI is detected
-            HVlipoDetected=1
-          else
-            HVlipoDetected=0
-          end
-        end
-      
+   local function BatteryCalcCellVoltageAndTyp()
+      if (battype==0) then
+          if math.ceil(data.battsum/4.37) > battype and data.battsum<4.37*8 then 
+             battype=math.ceil(data.battsum/4.37)
+             if battype==7 then battype=8 end --dont Support 5s&7s Battery, its Danger to Detect: if you have an Empty 8s its lock like an 7s...
+             if battype==5 then battype=6 end 
+           end
+      end
+      if data.battsum > 4.22*battype then --HVLI is detected
+         HVlipoDetected=1
+      else
+         HVlipoDetected=0
+      end
       if battype > 0 then 
-      CellVolt = data.battsum/battype 
-     end
-  end
+         CellVolt = data.battsum/battype 
+      end
+   end
   
 --------------------------------------------------------------------------------
 -- funnction conti Lipo Resistance Calculate V0.73 ALPHA ilihack
@@ -480,8 +479,10 @@ local getValue = getValue --faster
 local cellResult = getValue(data.celsid)
    if (type(cellResult) == "table") then
       data.battsum = 0
+      battype = 0
       for i, v in ipairs(cellResult) do
          data.battsum = data.battsum + v
+         battype = battype +1
       end
       else
       data.battsum =    getValue(data.vfasid)
