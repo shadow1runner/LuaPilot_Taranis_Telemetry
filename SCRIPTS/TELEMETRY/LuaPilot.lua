@@ -51,13 +51,13 @@ local SayFlightMode = 1 --0=off 1=on then play wav for Flightmodes changs       
 
   
   local data = {}
-        --data.battsumid =    getTelemetryId("VFAS")
+	--data.battsumid =    getTelemetryId("VFAS")
 	data.vfasid =       getTelemetryId("VFAS")
 	data.celsid =       getTelemetryId("Cels")
- 	data.altid =        getTelemetryId("Alt")
-        --data.gpsaltid =     getTelemetryId("GAlt") 
+	data.altid =        getTelemetryId("Alt")
+	--data.gpsaltid =     getTelemetryId("GAlt") 
 	data.spdid =        getTelemetryId("GSpd")
-        data.gpsid =        getTelemetryId("GPS")
+	data.gpsid =        getTelemetryId("GPS")
 	data.currentid =    getTelemetryId("Curr")
 	data.flightmodeId = getTelemetryId("Tmp1")
 	data.rssiId =       getTelemetryId("RSSI")
@@ -65,15 +65,15 @@ local SayFlightMode = 1 --0=off 1=on then play wav for Flightmodes changs       
 	data.headingid =    getTelemetryId("Hdg")
   
   
-  --init Telemetry Variables 
-  data.battsum =    0
-  data.alt =        0
-  data.spd =        0
-  data.current =    0
-  data.flightmodeNr=0
-  data.rssi =       0
-  data.gpssatcount =0
-  data.heading =    0
+	--init Telemetry Variables 
+	data.battsum =    0
+	data.alt =        0
+	data.spd =        0
+	data.current =    0
+	data.flightmodeNr=0
+	data.rssi =       0
+	data.gpssatcount =0
+	data.heading =    0
 
   --init Timer
   local oldTime={0,0,0,0,0,0}
@@ -122,11 +122,7 @@ local SayFlightMode = 1 --0=off 1=on then play wav for Flightmodes changs       
   }
 --Script Initiation end  
 
-  
-  
-  
-  
-  
+
 --------------------------------------------------------------------------------  
 --------------------------------------------------------------------------------   
 --------------------------------------------------------------------------------
@@ -134,13 +130,13 @@ local SayFlightMode = 1 --0=off 1=on then play wav for Flightmodes changs       
 -------------------------------------------------------------------------------- 
 --------------------------------------------------------------------------------  
 --------------------------------------------------------------------------------  
-  
-  
+
+
 --------------------------------------------------------------------------------
 -- function Reset Variables
 -------------------------------------------------------------------------------
 local function ResetVar() 
-  
+
     --data.battsumid =    getTelemetryId("VFAS")
     data.vfasid =       getTelemetryId("VFAS")
     data.celsid =       getTelemetryId("Cels")
