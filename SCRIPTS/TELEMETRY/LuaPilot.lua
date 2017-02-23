@@ -454,16 +454,16 @@ local function loadGpsData()
   if GPSOKAY==3 and (type(data.gps) == "table") then
     
     if data.gps["lat"] ~= nil and data.lat==nil then
-	    data.lat = data.gps["lat"]
-	  elseif data.gps["lon"] ~= nil and data.lon==nil then
-	    data.lon = data.gps["lon"]
-	  else
-      local sin=math.sin--locale are faster
-      local cos=math.cos
-      local z1 = (sin(data.lon - data.gps["lon"]) * cos(data.lat) )*6358364.9098634
-	    local z2 = (cos(data.gps["lat"]) * sin(data.lat) - sin(data.gps["lat"]) * cos(data.lat) * cos(data.lon - data.gps["lon"]) )*6358364.9098634 
-      gps_hori_Distance =  (math.sqrt( z1*z1 + z2*z2))/100
-      
+        data.lat = data.gps["lat"]
+    elseif data.gps["lon"] ~= nil and data.lon==nil then
+        data.lon = data.gps["lon"]
+    else
+    local sin=math.sin--locale are faster
+    local cos=math.cos
+    local z1 = (sin(data.lon - data.gps["lon"]) * cos(data.lat) )*6358364.9098634
+    local z2 = (cos(data.gps["lat"]) * sin(data.lat) - sin(data.gps["lat"]) * cos(data.lat) * cos(data.lon - data.gps["lon"]) )*6358364.9098634 
+    gps_hori_Distance =  (math.sqrt( z1*z1 + z2*z2))/100
+
     end      
             
   end
