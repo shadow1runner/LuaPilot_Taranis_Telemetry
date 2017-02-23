@@ -479,12 +479,17 @@ local getValue = getValue --faster
 local cellResult = getValue(data.celsid)
    if (type(cellResult) == "table") then
       data.battsum = 0
-      battype = 0
-      for i, v in ipairs(cellResult) do
-         data.battsum = data.battsum + v
-         battype = battype +1
-      end
+      if (battype == 0) then
+         for i, v in ipairs(cellResult) do
+            data.battsum = data.battsum + v
+            battype = battype +1
+         end
       else
+         for i, v in ipairs(cellResult) do
+            data.battsum = data.battsum + v
+         end
+      end
+   else
       data.battsum =    getValue(data.vfasid)
    end
 
