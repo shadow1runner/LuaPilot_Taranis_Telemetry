@@ -4,7 +4,7 @@
 --#  + with opentx 2.16 and above, tested with D4r-II & D8R & X4R                         #
 --#  + works with Arducopter Flight  Controller like Pixhawk,APM and maybe others         #
 --#                                                                                       #
---#  Thanks to gulp79, SockEye, Richardoe, Schicksie,lichtl                                       #    
+--#  Thanks to Lupinixx, athertop, gulp79, SockEye, Richardoe, Schicksie,lichtl                                       #    
 --#  _ben&Jace25(FPV-Community) and Clooney82&fnoopdogg                                   #
 --#                                                                                       #
 --#  LuaPilot © 2017 ilihack                                                              #
