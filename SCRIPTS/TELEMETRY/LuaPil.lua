@@ -626,8 +626,8 @@ end
         drawText(getLastPos(), 25, round(data.spd*1.149), MIDSIZE)
         drawText(getLastPos(), 29, "mph", SMLSIZE)
       else
-        drawText(getLastPos(), 25, round(data.spd*1.851), MIDSIZE)
-        drawText(getLastPos(), 29, "kmh", SMLSIZE)
+	drawText(getLastPos(), 25, round(data.spd*1.851*2), MIDSIZE)
+	drawText(getLastPos(), 29, "kmh", SMLSIZE)	
       end    
       
         
