@@ -1,5 +1,5 @@
 --#########################################################################################
---#   LuaPilot v2.007  Lua Telemetry Script for Taranis                                   #
+--#   LuaPilot v2.008  Lua Telemetry Script for Taranis                                   #
 --#                                                                                       #
 --#  + with opentx 2.16 and above, tested with D4r-II & D8R & X4R                         #
 --#  + works with Arducopter Flight  Controller like Pixhawk,APM and maybe others         #
