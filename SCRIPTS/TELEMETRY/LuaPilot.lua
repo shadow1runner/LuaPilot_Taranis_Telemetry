@@ -429,7 +429,7 @@ local function calcGpsDistance()
       data.lat = data.gps["lat"]
     elseif data.gps["lon"] ~= nil and data.lon == nil then
       data.lon = data.gps["lon"]
-    else
+    elseif data.gps["lon"] ~= nil and data.lon ~= nil and data.gps["lat"] ~= nil and data.lat ~= nil then
       local sin = math.sin--locale are faster
       local cos = math.cos
       local z1 = (sin(data.lon - data.gps["lon"]) * cos(data.lat) )*6358364.9098634
