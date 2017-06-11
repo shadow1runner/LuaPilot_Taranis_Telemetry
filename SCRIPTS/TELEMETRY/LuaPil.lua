@@ -106,7 +106,6 @@ local data = {}
   local gps_hori_Distance=0.0
   local lastsaynbattpercent=100
   local rxpercent = 0
-  local firsttime=0
   local DisplayTimer=0
   local settings = getGeneralSettings()
 
@@ -167,7 +166,6 @@ local function ResetVar()
     gps_hori_Distance=0.0
     lastsaynbattpercent=100
     battype=0
-    firsttime=1
     settings = getGeneralSettings()
     data.lon=nil
     data.lat=nil
@@ -891,16 +889,6 @@ end
 -- RUN loop FUNCTION
 --------------------------------------------------------------------------------
 local function run(event)
-  if firsttime==0 then
-    playFile("/SCRIPTS/WAV/welcome.wav") 
-  end
-  if firsttime<60 then
-    lcd.drawPixmap(0, 0, "/SCRIPTS/BMP/LuaPiloL.bmp")
-    lcd.drawPixmap(106, 0, "/SCRIPTS/BMP/LuaPiloR.bmp")
-    firsttime=firsttime+1
-    return 0
-  end
-  
   if event ==  64  then --if menu key pressed that Reset All Variables.  
     playFile("/SCRIPTS/WAV/reset.wav")
     killEvents(64) 
