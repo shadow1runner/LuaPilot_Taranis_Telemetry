@@ -14,7 +14,7 @@
 local HeadingOrDist = 2       --draw Hdg=0 / Draw Distance=1 / Draw Both alternatel=2     #
 local BatterymahAlarm = 0 --0=off or like 2200 for Alarming if you used more 2200mAh      #
 local SaybatteryPercent=1 ---0=off or 1 if you will hear you Batterypercent in 10% Steps  #
-local CellVoltAlarm=3.3 --0=off or like 3.3 to get an Alarm if you have less than 3.3V    #                            
+local CellVoltAlarm=3.3 --0=off or like 3.3 to get an Alarm if you have less than 3.3V    #
 --                                                                                        #
 --#########################################################################################                                                  
 -- Advance Configs:                                                                       #
@@ -22,7 +22,8 @@ local CellVoltAlarm=3.3 --0=off or like 3.3 to get an Alarm if you have less tha
 local MaxAvarageAmpere=0 -- 0=Off, Alarm if the avarage 5s current is over this Value     #
 local CalcBattResistance=0 --0=off 1=AutoCalc Lipo Resistance an correct Lipo.Level ALPHA #   
 local battype=0   -- 0=Autodetection (1s,2s,3s,4s,6s,8s) or 7 for an 7s Battery Conf      #
-local BattLevelmAh = 0 --if 0 BatteryLevel calc from Volt else from this mAh Value        #
+local BattLevelmAh = 0 --if 0 BatteryLevel calc from Volt, if -1 Fuel is used else        #
+                       --from this mAh Value                                             #
 local GPSOKAY=1 --1=play Wav files for Gps Stat , 0= Disable wav Playing for Gps Status   # 
 local SayFlightMode = 1 --0=off 1=on then play wav for Flightmodes changs                 #
 --                                                                                        #
@@ -63,6 +64,7 @@ local data = {}
   data.rssiId =       getTelemetryId("RSSI")
   data.gpssatsid =    getTelemetryId("Tmp2")
   data.headingid =    getTelemetryId("Hdg")
+  data.fuelid =       getTelemetryId("Fuel")
 
 
   --init Telemetry Variables 
@@ -150,6 +152,7 @@ local function ResetVar()
     data.rssiId =       getTelemetryId("RSSI")
     data.gpssatsid =    getTelemetryId("Tmp2")
     data.headingid =    getTelemetryId("Hdg")
+    data.fuelid =       getTelemetryId("Fuel")
   
     Time={0,0,0,0,0,0}
     Vspeed = 0.0
@@ -333,7 +336,7 @@ end
   -- funnction Lipo Range Calculate with COMSUME
 --------------------------------------------------------------------------------
   local function BatteryLevelCalcmah()  --calc Battery Percent with mah comsume
-    if BattLevelmAh~=0 then
+    if BattLevelmAh>0 then
       battpercent= round((100/BattLevelmAh)*(BattLevelmAh-totalbatteryComsum))  
     end
     if battpercent<0 then battpercent=0 end
@@ -502,6 +505,7 @@ local cellResult = getValue(data.celsid)
     data.gpssatcount =getValue(data.gpssatsid)
     data.gps =        getValue(data.gpsid)
     data.heading =    getValue(data.headingid)
+    data.fuel =       getValue(data.fuelid)
 end
     
     
@@ -934,7 +938,13 @@ local function run(event)
   
   if HeadingOrDist ==1 or HeadingOrDist ==2       then loadGpsData() end
   if CalcBattResistance==1                        then BatteryResistanceCalc() end
-  if BattLevelmAh>0                               then BatteryLevelCalcmah()  else BatteryLevelCalcVoltage() end
+  if BattLevelmAh > 0 then
+      BatteryLevelCalcmah()
+  elseif BattLevelmAh < 0 then
+      battpercent = data.fuel
+  else
+      BatteryLevelCalcVoltage()
+  end
   if SaybatteryPercent==1                         then SayBattPercent()     end
   
   CalcDisplayTimer()
