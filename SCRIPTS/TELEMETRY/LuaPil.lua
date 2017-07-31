@@ -585,6 +585,9 @@ end
     
     if data.rssi > 38 then
       rxpercent =round(rxpercent*0.5+0.5*(((math.log(data.rssi-28, 10)-1)/(math.log(72, 10)-1))*100))
+      if rxpercent > 99.9 then
+          rxpercent = 99.9
+      end
     else
       rxpercent=0
     end
