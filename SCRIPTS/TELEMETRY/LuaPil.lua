@@ -660,13 +660,13 @@ end
     
     if data.heading <0 or data.heading >360 then HdgOrt="Error"  
       elseif data.heading <  22.5  then HdgOrt="N"     
-      elseif data.heading <  67.5  then HdgOrt="NO" 
-      elseif data.heading <  112.5 then HdgOrt="O"  
-      elseif data.heading <  157.5 then HdgOrt="OS" 
+      elseif data.heading <  67.5  then HdgOrt="NE" 
+      elseif data.heading <  112.5 then HdgOrt="E"  
+      elseif data.heading <  157.5 then HdgOrt="SE" 
       elseif data.heading <  202.5 then HdgOrt="S"  
       elseif data.heading <  247.5 then HdgOrt="SW"    
       elseif data.heading <  292.5 then HdgOrt="W"     
-      elseif data.heading <  337.5 then HdgOrt="WN"    
+      elseif data.heading <  337.5 then HdgOrt="NW"    
       elseif data.heading <= 360.0 then HdgOrt="N"    
     end
     
