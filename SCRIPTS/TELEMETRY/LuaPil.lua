@@ -2,7 +2,7 @@
 --#   LuaPilot v2.008  Lua Telemetry Script for Taranis                                   #
 --#                                                                                       #
 --#  + with opentx 2.16 and above, tested with D4r-II & D8R & X4R                         #
---#  + works with Arducopter Flight  Controller like Pixhawk,APM and maybe others         #
+--#  + works with Arducopter Flight Controller like Pixhawk, APM, PX4 and maybe others    #
 --#                                                                                       #
 --#  Thanks to Lupinixx, athertop, gulp79, SockEye, Richardoe, Schicksie,lichtl                                       #    
 --#  _ben&Jace25(FPV-Community) and Clooney82&fnoopdogg                                   #
@@ -773,47 +773,48 @@ end
 
 local FlightModeName = {}
 
-	-- APM Flight Modes
-	FlightModeName[0]="Stabilize"
-	FlightModeName[1]="Acro"
-	FlightModeName[2]="Alt Hold"
-	FlightModeName[3]="Auto"
-	FlightModeName[4]="Guided"
-	FlightModeName[5]="Loiter"
-	FlightModeName[6]="RTL"
-	FlightModeName[7]="Circle"
-	FlightModeName[8]="Invalid Mode"
-	FlightModeName[9]="Landing"
-	FlightModeName[10]="Optic Loiter"
-	FlightModeName[11]="Drift"
-	FlightModeName[12]="Invalid Mode"
-	FlightModeName[13]="Sport"
-	FlightModeName[14]="Flip"
-	FlightModeName[15]="Auto Tune"
-	FlightModeName[16]="Pos Hold"
-	FlightModeName[17]="Brake"
-	
-	-- PX4 Flight Modes
-	FlightModeName[18]="Manual"
-	FlightModeName[19]="Acro"
-	FlightModeName[20]="Stabilized"
-	FlightModeName[21]="RAttitude"
-	FlightModeName[22]="Pos Control"
-	FlightModeName[23]="Alt Control"
-	FlightModeName[24]="Offb Control"
-	FlightModeName[25]="Auto Takeoff"
-	FlightModeName[26]="Auto Pause"
-	FlightModeName[27]="Auto Mission"
-	FlightModeName[28]="Auto RTL"
-	FlightModeName[29]="Auto Landing"
-	
-	FlightModeName[30]="No Telemetry"
-    
-  if data.flightmodeNr < 0 or data.flightmodeNr > 30 then
+  -- APM Flight Modes
+  FlightModeName[0]="Stabilize"
+  FlightModeName[1]="Acro"
+  FlightModeName[2]="Alt Hold"
+  FlightModeName[3]="Auto"
+  FlightModeName[4]="Guided"
+  FlightModeName[5]="Loiter"
+  FlightModeName[6]="RTL"
+  FlightModeName[7]="Circle"
+  FlightModeName[8]="Invalid Mode"
+  FlightModeName[9]="Landing"
+  FlightModeName[10]="Optic Loiter"
+  FlightModeName[11]="Drift"
+  FlightModeName[12]="Invalid Mode"
+  FlightModeName[13]="Sport"
+  FlightModeName[14]="Flip"
+  FlightModeName[15]="Auto Tune"
+  FlightModeName[16]="Pos Hold"
+  FlightModeName[17]="Brake"
+
+  -- PX4 Flight Modes
+  FlightModeName[18]="Manual"
+  FlightModeName[19]="Acro"
+  FlightModeName[20]="Stabilized"
+  FlightModeName[21]="RAttitude"
+  FlightModeName[22]="Position"
+  FlightModeName[23]="Altitude"
+  FlightModeName[24]="Offboard"
+  FlightModeName[25]="Takeoff"
+  FlightModeName[26]="Pause"
+  FlightModeName[27]="Mission"
+  FlightModeName[28]="RTL"
+  FlightModeName[29]="Landing"
+  FlightModeName[30]="Follow"
+
+  FlightModeName[31]="No Telemetry"
+
+  if data.flightmodeNr < 0 or data.flightmodeNr > 31 then
       data.flightmodeNr=12    
   
     elseif data.flightmodeId ==-1 or ( rxpercent==0 and data.flightmodeNr==0 )then
-      data.flightmodeNr=30
+      data.flightmodeNr=31
   end
     
     
