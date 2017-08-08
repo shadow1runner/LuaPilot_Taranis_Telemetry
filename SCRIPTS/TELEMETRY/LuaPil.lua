@@ -2,7 +2,7 @@
 --#   LuaPilot v2.008  Lua Telemetry Script for Taranis                                   #
 --#                                                                                       #
 --#  + with opentx 2.16 and above, tested with D4r-II & D8R & X4R                         #
---#  + works with Arducopter Flight  Controller like Pixhawk,APM and maybe others         #
+--#  + works with Arducopter Flight Controller like Pixhawk, APM, PX4 and maybe others    #
 --#                                                                                       #
 --#  Thanks to Lupinixx, athertop, gulp79, SockEye, Richardoe, Schicksie,lichtl                                       #    
 --#  _ben&Jace25(FPV-Community) and Clooney82&fnoopdogg                                   #
@@ -14,7 +14,7 @@
 local HeadingOrDist = 2       --draw Hdg=0 / Draw Distance=1 / Draw Both alternatel=2     #
 local BatterymahAlarm = 0 --0=off or like 2200 for Alarming if you used more 2200mAh      #
 local SaybatteryPercent=1 ---0=off or 1 if you will hear you Batterypercent in 10% Steps  #
-local CellVoltAlarm=3.3 --0=off or like 3.3 to get an Alarm if you have less than 3.3V    #                            
+local CellVoltAlarm=3.3 --0=off or like 3.3 to get an Alarm if you have less than 3.3V    #
 --                                                                                        #
 --#########################################################################################                                                  
 -- Advance Configs:                                                                       #
@@ -22,7 +22,8 @@ local CellVoltAlarm=3.3 --0=off or like 3.3 to get an Alarm if you have less tha
 local MaxAvarageAmpere=0 -- 0=Off, Alarm if the avarage 5s current is over this Value     #
 local CalcBattResistance=0 --0=off 1=AutoCalc Lipo Resistance an correct Lipo.Level ALPHA #   
 local battype=0   -- 0=Autodetection (1s,2s,3s,4s,6s,8s) or 7 for an 7s Battery Conf      #
-local BattLevelmAh = 0 --if 0 BatteryLevel calc from Volt else from this mAh Value        #
+local BattLevelmAh = 0 --if 0 BatteryLevel calc from Volt, if -1 Fuel is used else        #
+                       --from this mAh Value                                             #
 local GPSOKAY=1 --1=play Wav files for Gps Stat , 0= Disable wav Playing for Gps Status   # 
 local SayFlightMode = 1 --0=off 1=on then play wav for Flightmodes changs                 #
 --                                                                                        #
@@ -63,6 +64,7 @@ local data = {}
   data.rssiId =       getTelemetryId("RSSI")
   data.gpssatsid =    getTelemetryId("Tmp2")
   data.headingid =    getTelemetryId("Hdg")
+  data.fuelid =       getTelemetryId("Fuel")
 
 
   --init Telemetry Variables 
@@ -150,6 +152,7 @@ local function ResetVar()
     data.rssiId =       getTelemetryId("RSSI")
     data.gpssatsid =    getTelemetryId("Tmp2")
     data.headingid =    getTelemetryId("Hdg")
+    data.fuelid =       getTelemetryId("Fuel")
   
     Time={0,0,0,0,0,0}
     Vspeed = 0.0
@@ -333,7 +336,7 @@ end
   -- funnction Lipo Range Calculate with COMSUME
 --------------------------------------------------------------------------------
   local function BatteryLevelCalcmah()  --calc Battery Percent with mah comsume
-    if BattLevelmAh~=0 then
+    if BattLevelmAh>0 then
       battpercent= round((100/BattLevelmAh)*(BattLevelmAh-totalbatteryComsum))  
     end
     if battpercent<0 then battpercent=0 end
@@ -502,6 +505,7 @@ local cellResult = getValue(data.celsid)
     data.gpssatcount =getValue(data.gpssatsid)
     data.gps =        getValue(data.gpsid)
     data.heading =    getValue(data.headingid)
+    data.fuel =       getValue(data.fuelid)
 end
     
     
@@ -581,6 +585,9 @@ end
     
     if data.rssi > 38 then
       rxpercent =round(rxpercent*0.5+0.5*(((math.log(data.rssi-28, 10)-1)/(math.log(72, 10)-1))*100))
+      if rxpercent > 100 then
+          rxpercent = 100
+      end
     else
       rxpercent=0
     end
@@ -653,13 +660,13 @@ end
     
     if data.heading <0 or data.heading >360 then HdgOrt="Error"  
       elseif data.heading <  22.5  then HdgOrt="N"     
-      elseif data.heading <  67.5  then HdgOrt="NO" 
-      elseif data.heading <  112.5 then HdgOrt="O"  
-      elseif data.heading <  157.5 then HdgOrt="OS" 
+      elseif data.heading <  67.5  then HdgOrt="NE" 
+      elseif data.heading <  112.5 then HdgOrt="E"  
+      elseif data.heading <  157.5 then HdgOrt="SE" 
       elseif data.heading <  202.5 then HdgOrt="S"  
       elseif data.heading <  247.5 then HdgOrt="SW"    
       elseif data.heading <  292.5 then HdgOrt="W"     
-      elseif data.heading <  337.5 then HdgOrt="WN"    
+      elseif data.heading <  337.5 then HdgOrt="NW"    
       elseif data.heading <= 360.0 then HdgOrt="N"    
     end
     
@@ -766,47 +773,48 @@ end
 
 local FlightModeName = {}
 
-	-- APM Flight Modes
-	FlightModeName[0]="Stabilize"
-	FlightModeName[1]="Acro"
-	FlightModeName[2]="Alt Hold"
-	FlightModeName[3]="Auto"
-	FlightModeName[4]="Guided"
-	FlightModeName[5]="Loiter"
-	FlightModeName[6]="RTL"
-	FlightModeName[7]="Circle"
-	FlightModeName[8]="Invalid Mode"
-	FlightModeName[9]="Landing"
-	FlightModeName[10]="Optic Loiter"
-	FlightModeName[11]="Drift"
-	FlightModeName[12]="Invalid Mode"
-	FlightModeName[13]="Sport"
-	FlightModeName[14]="Flip"
-	FlightModeName[15]="Auto Tune"
-	FlightModeName[16]="Pos Hold"
-	FlightModeName[17]="Brake"
-	
-	-- PX4 Flight Modes
-	FlightModeName[18]="Manual"
-	FlightModeName[19]="Acro"
-	FlightModeName[20]="Stabilized"
-	FlightModeName[21]="RAttitude"
-	FlightModeName[22]="Pos Control"
-	FlightModeName[23]="Alt Control"
-	FlightModeName[24]="Offb Control"
-	FlightModeName[25]="Auto Takeoff"
-	FlightModeName[26]="Auto Pause"
-	FlightModeName[27]="Auto Mission"
-	FlightModeName[28]="Auto RTL"
-	FlightModeName[29]="Auto Landing"
-	
-	FlightModeName[30]="No Telemetry"
-    
-  if data.flightmodeNr < 0 or data.flightmodeNr > 30 then
+  -- APM Flight Modes
+  FlightModeName[0]="Stabilize"
+  FlightModeName[1]="Acro"
+  FlightModeName[2]="Alt Hold"
+  FlightModeName[3]="Auto"
+  FlightModeName[4]="Guided"
+  FlightModeName[5]="Loiter"
+  FlightModeName[6]="RTL"
+  FlightModeName[7]="Circle"
+  FlightModeName[8]="Invalid Mode"
+  FlightModeName[9]="Landing"
+  FlightModeName[10]="Optic Loiter"
+  FlightModeName[11]="Drift"
+  FlightModeName[12]="Invalid Mode"
+  FlightModeName[13]="Sport"
+  FlightModeName[14]="Flip"
+  FlightModeName[15]="Auto Tune"
+  FlightModeName[16]="Pos Hold"
+  FlightModeName[17]="Brake"
+
+  -- PX4 Flight Modes
+  FlightModeName[18]="Manual"
+  FlightModeName[19]="Acro"
+  FlightModeName[20]="Stabilized"
+  FlightModeName[21]="RAttitude"
+  FlightModeName[22]="Position"
+  FlightModeName[23]="Altitude"
+  FlightModeName[24]="Offboard"
+  FlightModeName[25]="Takeoff"
+  FlightModeName[26]="Pause"
+  FlightModeName[27]="Mission"
+  FlightModeName[28]="RTL"
+  FlightModeName[29]="Landing"
+  FlightModeName[30]="Follow"
+
+  FlightModeName[31]="No Telemetry"
+
+  if data.flightmodeNr < 0 or data.flightmodeNr > 31 then
       data.flightmodeNr=12    
   
     elseif data.flightmodeId ==-1 or ( rxpercent==0 and data.flightmodeNr==0 )then
-      data.flightmodeNr=30
+      data.flightmodeNr=31
   end
     
     
@@ -934,7 +942,13 @@ local function run(event)
   
   if HeadingOrDist ==1 or HeadingOrDist ==2       then loadGpsData() end
   if CalcBattResistance==1                        then BatteryResistanceCalc() end
-  if BattLevelmAh>0                               then BatteryLevelCalcmah()  else BatteryLevelCalcVoltage() end
+  if BattLevelmAh > 0 then
+      BatteryLevelCalcmah()
+  elseif BattLevelmAh < 0 then
+      battpercent = data.fuel
+  else
+      BatteryLevelCalcVoltage()
+  end
   if SaybatteryPercent==1                         then SayBattPercent()     end
   
   CalcDisplayTimer()
