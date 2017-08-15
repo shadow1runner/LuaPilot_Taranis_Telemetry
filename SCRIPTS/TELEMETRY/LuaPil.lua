@@ -199,7 +199,7 @@ local function SayBattPercent()
     if Time[6]> 700 then --and only say if battpercent 10 % below for more than 10sec
       lastsaynbattpercent=(round(battpercent*0.1)*10)
       Time[6] = 0
-      playNumber(round(lastsaynbattpercent), 8, 0)
+      playNumber(round(lastsaynbattpercent), 13, 0)
       if lastsaynbattpercent <= 10 then 
         playFile("batcrit.wav") 
       end
